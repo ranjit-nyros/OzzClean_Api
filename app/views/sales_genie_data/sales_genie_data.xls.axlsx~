@@ -1,0 +1,6 @@
+SalesGenieDatum.to_xlsx package: xlsx_package
+xlsx_package.workbook.worksheets.first.tap do |sheet|
+    sheet.add_row ["First Column", "Second", "Third"]
+    sheet.add_row [1, 2, 3]
+    sheet.add_row ['     preserving whitespace']
+end

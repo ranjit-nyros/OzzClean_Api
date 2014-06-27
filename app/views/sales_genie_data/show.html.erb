@@ -1,0 +1,51 @@
+<p>
+	<b>Good: </b>
+	<% if @sales_genie_datum.good.include?("Good") %>
+		<%= image_tag("check-mark-md.png", size: "16x10", alt: "active")%>
+	<% end %>
+</p>
+<p>
+	<b>Upload Date: </b>
+	<%= @sales_genie_datum.up_date %>
+</p>
+<p>
+	<b>List Produced Date: </b>
+	<%= @sales_genie_datum.upload_date %>
+</p>
+<p>
+	<b>File Name: </b>
+	<%= @sales_genie_datum.file %>
+</p>
+<p>
+	<b>Phone Number: </b>
+	<%= @sales_genie_datum.phone_num %>
+</p>
+<p>
+	<b>Company: </b>
+	<%= @sales_genie_datum.company %>
+</p>
+<p>
+	<b>Contact: </b>
+	<%= @sales_genie_datum.contact %>
+</p>
+<p>
+	<b>SIC: </b>
+	<%= @sales_genie_datum.sic %>
+</p>
+<p>
+	<b>ZIP: </b>
+	<%= @sales_genie_datum.zip %>
+</p>
+<p>
+	<b>Area Code: </b>
+	<%= @sales_genie_datum.area_code %>
+</p>
+<p>
+	<b>Last Updation: </b>
+	<%= @sales_genie_datum.last_updated_date %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_sales_genie_datum_path(@sales_genie_datum), :class => 'btn btn-primary' %>
+<%= link_to 'Back', sales_genie_data_path, :class => 'btn btn-info' %>

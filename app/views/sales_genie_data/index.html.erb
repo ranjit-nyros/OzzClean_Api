@@ -1,0 +1,91 @@
+<body class="left_panel">
+<div class="container">
+ <%= link_to image_submit_tag("excel1.png", :style=>"width:25px;height:25px; margin-top: 20px;", :class => "pull-right"), export_xls_path, :confirm => "Do You Want To Download Excel Report?" , :title => "Excel Report"%>
+
+  <%= render :partial => "search_form", locals: {q: @q} %>
+  <div class="container">
+  <% if @sales_genie_data.blank? %>
+    <p class="well">You don't currently have any data </p>
+  <% else %>
+    <h2>Your Sales Genie Data </h2>
+    <p>Displaying <strong><%= @sales_genie_data.offset_value + 1 %> - <%= @sales_genie_data.offset_value + @sales_genie_data.length %> of <%= @sales_genie_data.total_count %></strong> records </p>
+<table class="table table-striped table1">
+  <tr>
+   	<% @sales_genie_data.each do |sales_genie_datum| %>
+		<% @sales = sales_genie_datum %>
+	<% end %>
+    <th style="min-width:70px"><%= sort_link(@q, :up_date,"Updated") %></th>
+    <th style="min-width:70px"><%= sort_link(@q, :upload_date,"List Produced Date") %></th>
+    <th><%= sort_link(@q, :file,"File")  if !@sales.file.nil?%></th>
+    <th><%= sort_link(@q, :phone_num,"Phone#")  if !@sales.phone_num.nil?%></th>
+    <th style="min-width:120px"><%= sort_link(@q, :company,"Company")  if !@sales.company.nil?%></th>
+    <th style="min-width:120px"><%= sort_link(@q, :contact,"Contact")  if !@sales.contact.nil?%></th>
+    <th><%= sort_link(@q, :title,"Title") if !@sales.title.nil? %></th>
+    <th style="min-width:150px"><%= sort_link(@q, :address,"Address") if !@sales.address.nil? %></th>
+    <th><%= sort_link(@q, :city,"City") if !@sales.city.nil? %></th>
+    <th><%= sort_link(@q, :state,"State") if !@sales.state.nil? %></th>
+    <th><%= sort_link(@q, :zip,"ZIP")  if !@sales.zip.nil?%></th>
+    <th><%= sort_link(@q, :area_code,"Area Code")  if !@sales.area_code.nil?%></th>
+    <!-- <th><%#= sort_link(@q, :score,"Credit Rating Score")  if !@sales.score.nil?%></th> -->
+    <th><%= sort_link(@q, :emp_size,"Employee Size")  if !@sales.emp_size.nil?%></th>
+    <th><%= sort_link(@q, :fax_num,"FAX Number")  if !@sales.fax_num.nil?%></th>
+    <th><%= sort_link(@q, :sales_volume,"Sales Volume")   if !@sales.sales_volume.nil?%></th>
+    <th style="min-width:80px"><%= sort_link(@q, :sic,"SIC")  if !@sales.sic.nil?%></th>
+    <th><%= sort_link(@q, :sic_description,"SIC Description") if !@sales.sic_description.nil? %></th>
+    <th><%= sort_link(@q, :owner,"Owner") if !@sales.owner.nil? %></th>
+    <th><%= sort_link(@q, :cfo,"CFO") if !@sales.cfo.nil? %></th>
+    <th><%= sort_link(@q, :controller,"Controller") if !@sales.controller.nil? %></th>
+    <th><%= sort_link(@q, :ap,"AP") if !@sales.ap.nil? %></th>
+    <th><%= sort_link(@q, :ar,"AR") if !@sales.ar.nil? %></th>
+    <th><%= sort_link(@q, :hr,"HR") if !@sales.hr.nil? %></th>
+    <th><%= sort_link(@q, :cio,"CIO") if !@sales.cio.nil? %></th>
+    <th><%= sort_link(@q, :it,"IT") if !@sales.it.nil? %></th>
+    <th><%= sort_link(@q, :sales_manager,"Sales Manager") if !@sales.sales_manager.nil? %></th>
+    <th style="min-width:70px"><%= sort_link(@q, :last_updated_date,"Last Updation") %></th>
+    <th></th>
+  </tr>
+
+<% @sales_genie_data.each do |sales_genie_datum| %>
+  <tr>
+	
+        <td><%= sales_genie_datum.up_date %></td>
+        <td><%= sales_genie_datum.upload_date %></td>
+    	<td onMouseOver="this.title=' <%= sales_genie_datum.file %>'" ><%= sales_genie_datum.file.truncate(20) %></td>
+    	<td><%= sales_genie_datum.phone_num %></td>
+    	<td><%= sales_genie_datum.company %></td>
+    	<td>
+		<% contact = sales_genie_datum.contact.split('/')%>
+		<%= contact[0] + "\s" + contact[1] if (!contact[0].nil? || !contact[1].nil?)%></td>
+        <td><%= sales_genie_datum.title if !sales_genie_datum.title.nil?%></td>
+    	<td><%= sales_genie_datum.address if !sales_genie_datum.address.nil?%></td>
+    	<td><%= sales_genie_datum.city if !sales_genie_datum.city.nil? %></td>
+    	<td><%= sales_genie_datum.state if !sales_genie_datum.state.nil?%></td>
+    	<td><%= sales_genie_datum.zip  if !sales_genie_datum.zip.nil? %></td>
+    	<td><%= sales_genie_datum.area_code  if !sales_genie_datum.area_code.nil?%></td>
+    	<!-- <td><%#= sales_genie_datum.score  if !sales_genie_datum.score.nil?%></td> -->
+    	<td><%= sales_genie_datum.emp_size  if !sales_genie_datum.emp_size.nil?%></td>
+    	<td><%= sales_genie_datum.fax_num  if !sales_genie_datum.fax_num.nil?%></td>
+    	<td><%= sales_genie_datum.sales_volume  if !sales_genie_datum.sales_volume.nil?%></td>
+    	<td><%= sales_genie_datum.sic  if !sales_genie_datum.sic.nil?%></td>
+    	<td><%= sales_genie_datum.sic_description if !sales_genie_datum.sic_description.nil?%></td>
+    	<td><%= sales_genie_datum.owner if !sales_genie_datum.owner.nil?%></td>
+    	<td><%= sales_genie_datum.cfo if !sales_genie_datum.cfo.nil?%></td>
+    	<td><%= sales_genie_datum.controller if !sales_genie_datum.controller.nil?%></td>
+    	<td><%= sales_genie_datum.ap if !sales_genie_datum.ap.nil?%></td>
+    	<td><%= sales_genie_datum.ar if !sales_genie_datum.ar.nil?%></td>
+    	<td><%= sales_genie_datum.hr if !sales_genie_datum.hr.nil?%></td>
+   	<td><%= sales_genie_datum.cio if !sales_genie_datum.cio.nil?%></td>
+   	<td><%= sales_genie_datum.it if !sales_genie_datum.it.nil?%></td>
+   	<td><%= sales_genie_datum.sales_manager if !sales_genie_datum.sales_manager.nil?%></td>
+    <td><%= sales_genie_datum.last_updated_date if !sales_genie_datum.last_updated_date.nil?%></td>
+	<td><%= link_to 'Show', sales_genie_datum, :class => 'btn btn-mini' %>
+	<%= link_to 'Edit', edit_sales_genie_datum_path(sales_genie_datum), :class => 'btn btn-mini btn-primary' %>
+	<%= link_to 'Destroy', sales_genie_datum, confirm: 'Are you sure?', method: :delete, :class => 'btn btn-mini btn-danger' %></td>
+  </tr>
+<% end %>
+</table>
+    <%= paginate @sales_genie_data %>
+<% end %>
+</div>
+</div>
+</body>

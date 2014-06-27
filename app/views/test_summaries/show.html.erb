@@ -1,0 +1,62 @@
+<%= render :partial => "menu"%>
+
+<p>
+	<b>Test Date:</b>
+	<%= @test_summary.test_date %>
+</p>
+<p>
+	<b>Caller:</b>
+	<%= @test_summary.caller %>
+</p>
+<p>
+	<b>Script Summary: </b>
+	<%= @test_summary.script_summary %>
+</p>
+<p>
+	<b>Test Size:</b>
+	<%= @test_summary.test_size %>
+</p>
+<p>
+	<b>#Interested:</b>
+	<%= @test_summary.num_of_interested %>
+</p>
+<p>
+	<b>Ap Names:</b>
+	<%= @test_summary.ap_names %>
+</p>
+<p>
+	<b>CFO Names:</b>
+	<%= @test_summary.cfo_names %>
+</p>
+<p>
+	<b>Owner Names:</b>
+	<%= @test_summary.owner_names %>
+</p>
+<p>
+	<b>Total Names:</b>
+	<%= @test_summary.total_names %>
+</p>
+
+<p>
+	<b>Employee Size:</b>
+	<%= @test_summary.employe_size %>
+</p>
+<p>
+	<b>Department Size:</b>
+	<%= @test_summary.dept_size %>
+</p>
+<p>
+	<b>Attached File:</b>
+	<%= link_to File.basename(@test_summary.file.path), "#" if !@test_summary.file.path.nil?%>
+</p>
+<p>
+	<b>Notes: </b>
+	<%= @test_summary.notes %>
+</p>
+<p>
+	<b>Test Goal: </b>
+	<%= @test_summary.test_goal %>
+</p>
+<%= link_to 'Back', test_summaries_path, :class => 'btn' %>
+<%= link_to 'Edit', edit_test_summary_path(@test_summary), :class => "btn btn-primary" %>
+<%#= link_to 'Destroy', @test_summary, confirm: 'Are you sure?', method: :delete , :class => 'btn btn-danger' %>

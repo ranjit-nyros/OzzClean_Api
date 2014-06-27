@@ -1,0 +1,84 @@
+<script>
+	$('document').ready(function(){
+		$('#datepicker').datepicker({
+			date_format: "mm/dd/yy"
+		})
+		$('#datepicker1').datepicker({
+			date_format: "mm/dd/yy"
+		})
+	})
+</script>
+<div class="container">
+<%= simple_form_for(@sales_genie_datum, :html => {:class => 'form-horizontal'}) do |f| %>
+	<%= f.error_notification %>
+<table>
+	<div class="form-controls">
+	<tr>	
+		<td><%= f.input :good, :label => 'Good' %></td>
+		<td><%= f.input :upload_date, :as => :string, :label => 'Upload Date', :input_html => {:id => "datepicker" } %></td>	
+	</tr>
+	<tr>
+		<td><%= f.input :file, :label => 'File' %></td>
+		<td><%= f.input :phone_num, :label => 'Phone#' %></td>
+	</tr>
+		<td><%= f.input :company, :label => 'Company'%></td>
+		<td><%= f.input :contact, :label => 'Contact' %></td>
+	</tr>
+	<tr>
+		<td colspan="2" class="span3"><%= f.input :address, input_html: { class: 'span8 text', rows: 4, :style => 'height: 150px' } %></td>
+	</tr>
+	<tr>
+		<td><%= f.input :state, :label => 'State' %></td>
+		<td><%= f.input :city, :label => 'City' %></td>
+	</tr>
+	<tr>
+		<td><%= f.input :zip, :label => 'ZIP' %></td>
+		<td><%= f.input :area_code, :label => 'Area Code' %></td>
+	</tr>
+	<tr>
+		<td><%= f.input :exp_date, :as => :string, :label => 'Expiry Date', :input_html => {:id => "datepicker1" } %></td>
+		<td><%= f.input :score, :label => 'Credit Rating Score' %></td>
+	</tr>
+	<tr>
+		<td><%= f.input :emp_size, :label => 'Employee Size' %></td>
+		<td><%= f.input :iusa_num, :label => 'IUSA Number' %></td>
+	</tr>
+	<tr>
+		<td><%= f.input :fax_num, :label => 'FAX Number' %></td>
+		<td><%= f.input :sales_volume, :label => 'Sales Volume' %></td>
+	</tr>
+	<tr>
+		<td colspan="2" class="span3"><%= f.input :sic_description, input_html: { class: 'span8 text', rows: 4, :style => 'height: 150px' } %></td>
+	</tr>
+	<tr>
+		<td><%= f.input :owner, :label => 'Owner' %></td>
+		<td><%= f.input :cfo, :label => 'CFO' %></td>
+	</tr>
+	<tr>
+		<td><%= f.input :controller, :label => 'Controller' %></td>
+		<td><%= f.input :ap, :label => 'AP' %></td>
+	</tr>
+	<tr>
+		<td><%= f.input :ar, :label => 'AR' %></td>
+		<td><%= f.input :hr, :label => 'HR' %></td>
+	</tr>
+	<tr>
+		<td><%= f.input :cio, :label => 'CIO' %></td>
+		<td><%= f.input :it, :label => 'IT' %></td>
+	</tr>
+	<tr>
+		<td><%= f.input :sic, :label => 'SIC' %></td>
+		<td><%= f.input :sales_manager, :label => 'Sales Manager' %></td>
+	</tr>
+		<%= f.input :user_id, :as => :hidden, :value => @sales_genie_datum.user_id %>
+		<%= f.input :organization_id, :as => :hidden, :value => @sales_genie_datum.organization_id %>
+		<%= f.input :list_clean_id, :as => :hidden,:value => @sales_genie_datum.list_clean_id %>
+	</div>
+</table>
+	<div class="form-actions">
+		<%= link_to "Back", sales_genie_data_path, :class => 'btn'%>
+		<%= f.submit :class => "btn btn-primary"%>
+	</div>
+ 
+<% end %>
+</div>

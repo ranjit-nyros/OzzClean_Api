@@ -1,0 +1,76 @@
+  <div class="wrapper content">
+   <div id="content-wrapper" class="clearfix row">
+   		<div class="span12 well"  style="height:100px;">
+   			<center><h2> OzzClean Help / API for Developers</h2></center>
+   			<hr > </hr>
+   			<center><h2>Getting started</h2></center>
+   		</div>
+   	<div class="span12">
+
+   		<div class="span12">
+   		<p class="api" >
+   			Ozzclean's full featured API will give you enough flexibility and integration opportunities. With the help of our full featured API, you can integrate your Ozzclean account into your own system or extend functionalities easily.
+
+		Ozzclean's API uses basic HTTP GET and POST methods to receive and send data. You can do almost everything that you can do on the user interface.
+   		</p>
+   		<br/><br/>
+   		<p style="font-size:24px;" >
+   		API command syntax
+   			
+   		</p>
+   		<hr> </hr>
+   		<p class="api"> You can access to your account API with the following format:</p>
+   		<p class="api1" style="height:60px;"> http://203.193.173.124:5000/api/command </p>
+
+   		<br/><br/>
+   		<p class="api">
+   			Heads up! Whenever you are going to make an API connection, you must pass your API key as post data. Otherwise, API error response will be returned. In order to pass your API key, first generate it in your account and then pass it with "APIKey" post data.
+   		</p>
+   		<br/><br/>
+   		   		<p style="font-size:24px;">
+   		Generating API key
+   			
+   		</p>
+   		<hr> </hr>
+   		<p class="api">
+   		You can generate unlimited API keys for each application you are going to integrate. In this way, you can isolate security risks. In order to generate an API key,  click "Generate API Key" below. Then fill the details , you will get the api key via email.
+
+		You will need this key when connecting to OzzClean's API.
+   		</p>
+   		   <br/><br/>
+   		<p style="font-size:24px;">
+   		Example API Call
+   			
+   		</p>
+   		<hr> </hr>
+   		<p class="api">
+   			Below, you can find an example curl command line connecting to OzzClean's API and getting the system time. In this example, we assume that API key is a dummy string.
+   		</p>
+   		<p class="api1" style="height:60px;">
+   		curl http://203.193.173.124:5000/api/list_cleans?access_token='YOUR API KEY / TOKEN'
+   		</p>
+
+   		<br/> <br/>
+   		<p class="api" >The response will be:</p> <br/>
+   		<p class="api1">
+		   { <br/>
+				"Success": true, <br/>
+				"SystemDate": "2012-06-18 23:50:50", <br/>
+				"SystemTimeZone": "Europe\/London" <br/>
+			}<br/>
+   		</p>	
+		<br/><br/>
+		<br/><br/>
+		<center><%= link_to "Generate API Key" ,new_api_key_path ,:class => 'btn btn-primary' %></center>
+   			
+   		</div>   		
+
+   	</div>
+    </div>
+ </div>
+ <style>
+hr { height: 1px;border: 0; border-top: 1px solid black;margin: 1em 0; padding: 0;}
+.api {font-size:16px;line-height:30px;}
+.api1 {font-size:14px; background: #B9D5E4; height:100px;border-radius:5px;}
+ </style>
+

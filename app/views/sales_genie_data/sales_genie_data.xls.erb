@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">Good</Data></Cell>
+        <Cell><Data ss:Type="String">Upload Date</Data></Cell>
+        <Cell><Data ss:Type="String">File</Data></Cell>
+        <Cell><Data ss:Type="String">Phone#</Data></Cell>
+        <Cell><Data ss:Type="String">Company</Data></Cell>
+        <Cell><Data ss:Type="String">Contact</Data></Cell>
+        <Cell><Data ss:Type="String">Address</Data></Cell>
+        <Cell><Data ss:Type="String">City</Data></Cell>
+        <Cell><Data ss:Type="String">State</Data></Cell>
+        <Cell><Data ss:Type="String">Zip</Data></Cell>
+        <Cell><Data ss:Type="String">Area Code</Data></Cell>
+        <Cell><Data ss:Type="String">Expiry Date</Data></Cell>
+        <Cell><Data ss:Type="String">Credit Rating Score</Data></Cell>
+        <Cell><Data ss:Type="String">Employee Size</Data></Cell>
+        <Cell><Data ss:Type="String">IUSA#</Data></Cell>
+        <Cell><Data ss:Type="String">FAX#</Data></Cell>
+        <Cell><Data ss:Type="String">Sales Volume</Data></Cell>
+        <Cell><Data ss:Type="String">SIC</Data></Cell>
+        <Cell><Data ss:Type="String">SIC Description</Data></Cell>
+        <Cell><Data ss:Type="String">Owner</Data></Cell>
+        <Cell><Data ss:Type="String">CFO</Data></Cell>
+        <Cell><Data ss:Type="String">Controller</Data></Cell>
+        <Cell><Data ss:Type="String">AP</Data></Cell>
+        <Cell><Data ss:Type="String">AR</Data></Cell>
+        <Cell><Data ss:Type="String">HR</Data></Cell>
+        <Cell><Data ss:Type="String">CIO</Data></Cell>
+        <Cell><Data ss:Type="String">IT</Data></Cell>
+        <Cell><Data ss:Type="String">Sales Manager</Data></Cell>
+      </Row>
+    <% @sales_genie_data.each do |sales_genie_data| %>
+      <Row>
+	<Cell><Data ss:Type="String"><%= sales_genie_data.upload_date %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= sales_genie_data.file %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= sales_genie_data.phone_num %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= sales_genie_data.company %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= sales_genie_data.contact %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= sales_genie_data.address %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= sales_genie_data.city %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= sales_genie_data.state %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= sales_genie_data.zip %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= sales_genie_data.area_code %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= sales_genie_data.exp_date %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= sales_genie_data.score %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= sales_genie_data.emp_size %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= sales_genie_data.fax_num %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= sales_genie_data.sales_volume %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= sales_genie_data.sic %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= sales_genie_data.sic_description %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= sales_genie_data.owner %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= sales_genie_data.cfo %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= sales_genie_data.controller %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= sales_genie_data.ap %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= sales_genie_data.ar %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= sales_genie_data.hr %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= sales_genie_data.cio %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= sales_genie_data.it %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= sales_genie_data.sales_manager %></Data></Cell>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>

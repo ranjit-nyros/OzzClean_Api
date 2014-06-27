@@ -1,0 +1,62 @@
+<body class="left_panel">
+<div class="container">
+<%= render :partial => 'menu'%>
+
+<%= render :partial => "search_form", locals: {q: @q} %>
+<div class="container" id="search-result">
+  <% if @test_summaries.blank? %>
+    <% if params[:q] %>
+      <p class="well">Your search does not generate a result</p>
+    <% end %>
+  <% else %>
+    <p>Displaying <strong><%= @test_summaries.offset_value + 1 %> - <%= @test_summaries.offset_value + @test_summaries.length %> of <%= @test_summaries.total_count %></strong> records </p>
+    <table class="table table-striped">
+      <tr>
+        <th><%= sort_link(@q, :test_date, "Test Date") %></th>
+	<th><%= sort_link(@q, :caller, "Caller") %></th>
+	<th><%= sort_link(@q, :script_summary, "Script Summary") %> </th>
+	<th><%= sort_link(@q, :test_size, "Test Size") %> </th>
+	<th><%= sort_link(@q, :num_of_interested, "#Interested") %> </th>
+	<th><%= sort_link(@q, :ap_names, "Ap Names") %></th>
+	<th><%= sort_link(@q, :cfo_names, "CFO Names") %></th>
+	<th><%= sort_link(@q, :owner_names, "Owner Names") %></th>
+	<th><%= sort_link(@q, :total_names, "Total Names") %></th>
+	<th><%= sort_link(@q, :employe_size, "Employee Size") %></th>
+	<th><%= sort_link(@q, :dept_size, "Department Size") %></th>
+	<th><%= sort_link(@q, :file, "File") %></th>
+	<th><%= sort_link(@q, :notes, "Notes") %></th>
+	<th><%= sort_link(@q, :test_goal, "Test Goal") %></th>
+	<th></th>
+      </tr>
+    <% for test_summary in @test_summaries %>
+      <tr>
+        	<td><%= test_summary.test_date %></td>
+        	<td><%= test_summary.caller %></td>
+		<td><%= test_summary.script_summary %></td>
+		<td><%= test_summary.test_size %></td>
+		<td><%= test_summary.num_of_interested %></td>
+		<td><%= test_summary.ap_names %></td>
+		<td><%= test_summary.cfo_names %></td>
+		<td><%= test_summary.owner_names %></td>
+		<td><%= test_summary.total_names %></td>
+		<td><%= test_summary.employe_size %></td>
+		<td><%= test_summary.dept_size %></td>
+		<td><%= File.basename(test_summary.file.path) if !test_summary.file.blank? %></td>
+		<td><%= test_summary.notes %></td>
+		<td><%= test_summary.test_goal %></td>
+        <td class="span3">
+          <%= link_to "Show", test_summary_path(test_summary), class: 'btn btn-mini'%>
+          <%= link_to "Edit", edit_test_summary_path(test_summary), class: 'btn btn-mini'%>
+	<% if test_summary.user_id == current_user.id %>
+          <%= link_to "Delete", test_summary_path(test_summary), class: 'btn btn-mini btn-danger', method: :delete, confirm: 'Are you sure?'%>
+	<% end %>
+        </td>
+      </tr>
+    <% end %>
+    </table>
+    <%= paginate @test_summaries %>
+  <% end %>
+  
+</div>
+</div>
+</body>

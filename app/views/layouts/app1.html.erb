@@ -1,0 +1,338 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>OzzData</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script src="/assets/jquery-1.7.2.min.js"></script>
+<style>
+body{
+margin:0px;
+padding:0px;
+border:none;
+background:url(/assets/bg.jpg) ;
+background-repeat:repeat-x;
+background-color:#fafafa;
+}
+.main{
+width:960px;
+height:auto;
+margin:0px auto;
+}
+
+.layout{
+width:960px;
+height:auto;
+}
+
+.nav{
+width:960px;
+height:33px;
+float:left;
+}
+#nav1{
+width:700px;
+height:33px;
+float:left;
+}
+#menu{
+width:260px;
+height:33px;
+float:left;
+
+}
+#menu ul{
+	display:inline;
+	line-height:30px;
+	
+
+}
+#menu ul li{
+	margin:0;
+	list-style:none;
+	float:left;
+}
+#menu ul li a{
+font-family:"Gnuolane Rg";
+font-size:16px;
+color:#FFFFFF;
+font-weight:normal;
+letter-spacing:1px;
+	line-height:30px;
+text-decoration:none;
+float:left;
+
+}
+#menu ul li a:hover{
+color:#3cc405;
+text-decoration:none;
+}
+#menu ul li a.active{
+color:#3cc405;
+text-decoration:none;
+}
+.logo{
+width:151px;
+height:45px;
+margin:25px 0px 0px 18px;
+background-repeat:no-repeat;
+float:left;}
+.body{
+margin-top:110px;
+float:left;
+width:100%;
+height:auto;
+}
+#body_left{
+width:645px;
+height:515px;
+float:left;
+margin-left:18px;}
+#body_right{
+width:297px;
+height:515px;
+float:left;}
+.sign_img{
+width:300px;
+height:60px;
+float:left;
+background:url(/assets/signin.gif);
+margin-left:-50px;
+}
+.signin_green{
+width:300px;
+height:250px;
+float:left;
+background-color:#38A8C4;margin-left:-50px;}
+.sign_greemcurve{
+width:300px;
+height:11px;
+background-repeat:no-repeat;
+float:left;
+background-color:#38A8C4;
+border-bottom-left-radius:6px;
+border-bottom-right-radius:6px;margin-left:-50px;}
+.user_name{
+font-family:Tahoma;
+font-size:12px;
+color:#FFFFFF;
+text-decoration:none;
+padding:20px 0px 0px 10px;
+
+}
+.input_box{
+font-family:Tahoma;
+font-size:12px;
+color:#242424;
+text-decoration:none;
+border:0px;
+width:160px;
+height:22px;
+line-height:22px;
+padding-left:2px;}
+.Forgot{
+font-family:Tahoma;
+font-size:12px;
+color:#fff;
+text-decoration:none;
+}
+.Forgot{
+font-family:Tahoma;
+font-size:12px;
+color:#fff;
+text-decoration:none;
+padding:42px 0px 0px 22px;
+}
+
+.Forgot a{
+font-family:Tahoma;
+font-size:12px;
+color:#fff;
+text-decoration:none;
+
+}
+.Forgot a:hover{
+font-family:Tahoma;
+font-size:12px;
+color:#fff;
+text-decoration:none;
+text-decoration:underline;
+}
+.login{
+background:url(/assets/login.jpg);
+border:0px;
+width:76px;
+height:30px;
+margin-left:61px;}
+.footer{
+width:100%;
+height:44px;
+background:url(/assets/bottom_bg.jpg);
+background-repeat:repeat-x;
+float:left;
+margin-top:40px;
+
+}
+#foooter_style{
+width:960px;
+margin-left:auto;
+margin-right:auto;
+font-family:Tahoma;
+font-size:12px;
+color:#FFFFFF;
+font-weight:normal;
+
+line-height:44px;
+text-decoration:none;
+}
+.footer1{
+width:750px;
+height:44px;
+float:left;}
+.footer2{
+width:210px;
+height:44px;
+float:left;
+}
+#submenu  ul{
+	display:inline;
+	line-height:30px;
+	
+
+}
+#submenu  ul li{
+	margin:0;
+	list-style:none;
+	float:left;
+}
+#submenu  ul li a{
+font-family:Tahoma;
+font-size:12px;
+color:#FFFFFF;
+font-weight:normal;
+letter-spacing:1px;
+	line-height:44px;
+text-decoration:none;
+float:left;
+
+}
+#submenu ul li a:hover{
+color:#3cc405;
+text-decoration:none;
+}
+#submenu ul li a.active{
+color:#3cc405;
+text-decoration:none;
+</style>
+<link rel="icon" type="image/png" href="/assets/favicon.png"/>
+<script>
+	$('document').ready(function(){
+		$('.que').change(function(){
+			if($(this).val() != "")
+			{
+				$('.answer').css('display',"block");
+			}	
+			else
+			{
+				$('.answer').css('display','none')
+			}
+		});
+	});
+</script>
+</head>
+
+<body>
+<div class="main">
+<div class="layout">
+<div class="nav">
+<div id="nav1"></div>
+<div id="menu">
+<ul>
+
+<li><a href="#" class="active">HOME&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+<li><a href="/signup">|&nbsp;&nbsp;&nbsp;&nbsp;CREATE ACCOUNT</a></li>
+</ul>
+
+</div>
+
+</div>
+
+
+
+<div class="logo"><a href="#"><img src="/assets/logo.jpg" border="0" /></a></div>
+
+
+<div class="body">
+
+
+
+<div id="body_left"><a href="#"><img src="/assets/img_front.jpg" border="0" /></a></div>
+<div id="notifications" style="float:right;margin-top:-78px">
+    <% [:error, :notice, :alert].each do |type| %>
+      <% if flash[type] %>
+        <%#= content_tag :div, class: "alert #{alert_class(type)}" do %>
+            
+            <div class="error""><span style="color:red"> <%= flash[type] %></span></div>
+        <%# end %>
+      <% end %>
+    <% end %>
+</div>	
+
+<div id="body_right">
+
+
+
+
+
+<div class="sign_img">
+
+
+</div>
+<% arr = ["Make of First Car", "What is your favorite Place","What is your Mother's Maiden Name","What was the last name of your third grade teacher?","What is your maternal grandmother's maiden name?","What is the name of your favorite childhood friend?"] %>
+<%= form_tag sessions_path do %>
+<div class="signin_green">
+<div class="user_name">USER NAME&nbsp;&nbsp;<%= text_field_tag :username, nil ,class:"input_box" %></div>
+<div class="user_name">PASSWORD&nbsp;&nbsp;<%= password_field_tag :password,nil,class:"input_box" %></div>
+<div class="user_name">QUESTION&nbsp;&nbsp;<%= select_tag(:question, options_for_select(arr),:prompt => "-----Select any question-----",:class => 'input_box que') %></div>
+<div class="user_name answer" style="display:none">ANSWER&nbsp;&nbsp;<%= text_field_tag :answer, nil ,class:"input_box" %></div>
+<div class="Forgot">Forgot Password&nbsp;&nbsp;<%= submit_tag "" ,class:"login"%></div>
+
+</div>
+<% end %>
+<div class="sign_greemcurve"></div>
+
+</div>
+
+</div>
+
+</div>
+</div>
+<div class="footer">
+<div id="foooter_style">
+<div class="footer1">Copyright OzzData</div>
+<div class="footer2">
+<div id="submenu">
+<ul>
+<li><a href="/contact_us">Contact Us</a></li>
+<li><a href="/privacy">|  Privacy  </a></li>
+<li><a href="/legal">| Legal  </a></li>
+</ul>
+
+</div>
+</div>
+</div>
+
+
+</div>
+
+
+<script type="text/javascript">
+  $('document').ready(function(){
+       $('.error').delay(1000).fadeOut('slow');       
+  });
+</script>
+
+</body>
+
+
+</html>

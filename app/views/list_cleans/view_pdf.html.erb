@@ -1,0 +1,57 @@
+  <!-- <%#= stylesheet_link_tag    "application", :media => "all" %> -->
+<div class="container">
+  <% if @list_cleans.blank? %>
+    <p class="well">You don't currently have any data </p>
+  <% else %>
+    <h2>Your List Cleans </h2>
+<!--     <p>Displaying <strong><%#= @list_cleans.offset_value + 1 %> - <%#= @list_cleans.offset_value + @list_cleans.length %> of <%#= @list_cleans.total_count %></strong> records </p> -->
+    <table>
+      <tr>
+		<th><%= sort_link(@q, :date) %></th>
+		<th><%= sort_link(@q, :source) %></th>
+		<th><%= sort_link(@q, :upload_by) %> </th>
+		<th><%= sort_link(@q, :file_name) %> </th>
+		<th><%= sort_link(@q, :selection_query) %> </th>
+		<th><%= sort_link(@q, :cleaned_by) %></th>
+		<th><%= sort_link(@q, :clean_date) %></th>
+		<th><%= sort_link(@q, :no_of_records) %></th>
+		<th><%= sort_link(@q, :no_of_good) %></th>
+		<th><%= sort_link(@q, :qa_by) %></th>
+		<th><%= sort_link(@q, :qa_date) %></th>
+		<th><%= sort_link(@q, :qa_notes) %></th>
+		<th><%= sort_link(@q, :status) %></th>
+		<th><%= sort_link(@q, :newfile) %></th>
+      </tr>
+	<% total = 0 %>
+	<% total1 = 0 %>
+    <% for list_clean in @list_cleans %>
+      <tr>
+        	<td><%= list_clean.date %></td>
+		<td><%= list_clean.source %></td>
+		<td><%= list_clean.upload_by %></td>
+		<td style="width:150px"><%= File.basename(list_clean.file_name.path) if !list_clean.file_name.blank? %></td>
+		<td><%= list_clean.selection_query %></td>
+		<td><%= list_clean.cleaned_by %></td>
+		<td><%= list_clean.clean_date %></td>
+		<td><%= list_clean.no_of_records %></td>
+		<% total = total + list_clean.no_of_records if !list_clean.no_of_records.nil?%>
+		<td><%= list_clean.no_of_good %></td>
+		<% total1 = total1 + list_clean.no_of_good  if !list_clean.no_of_good.nil?%>
+		<td><%= list_clean.qa_by %></td>
+		<td><%= list_clean.qa_date %></td>
+		<td><%= list_clean.qa_notes %></td>
+		<td><%= list_clean.status %></td>
+		<td style="width:150px"><%= File.basename(list_clean.newfile.path) if !list_clean.newfile.blank? %></td>
+      </tr>
+    <% end %>
+	<tr>
+		<td><b>Totals:</b></td>
+		<td colspan="6"></td>
+		<td><b><%= total %></b></td>
+		<td><b><%= total1 %></b></td>
+		<td colspan="4"></td>
+	</tr>
+    </table>
+    <%#= paginate @list_cleans %>
+  <% end %>
+</div>

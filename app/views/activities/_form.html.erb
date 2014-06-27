@@ -1,0 +1,46 @@
+<style>
+	.text
+	{
+		height:200px;
+	}
+</style>
+<script type="text/javascript">
+$(function(){
+// Datepicker
+$('#datepicker').datepicker({
+//inline: true
+dateFormat: 'mm/dd/yy'
+});
+});
+</script>
+
+
+<%= simple_form_for(@activity) do |f| %>
+  <%= f.error_notification %>
+  <div class="form-inputs">
+    <%#= f.association :category, collection: current_user.user_categories, :label => 'Folder' %>
+    <%= f.input :info, input_html: { class: 'span8 text', rows: 5, :height => "200px" } %>
+    <%= f.input :tags %>
+    <% if @activity.date.blank? %>
+    <%#= f.input :date, :as => :string, :label => "Date", :input_html => { :value => @current_date, :style => 'width: 120px', :id => "datepicker" } %>
+   <%= f.input :date, :as => :string, :label => "Date", :input_html => { :value => Time.now.strftime("%m/%d/%Y"), :style => 'width: 120px', :readonly => true } %>
+    <% elsif !@activity.date.blank? %>
+    <%= f.input :date,  :as => :string,  :label => "Date",:input_html => { :id => 'datepicker', :value => change_date_format_for_edit_page(@activity.date) , :style => 'width: 120px'} %>
+    <% end %>
+    <% if controller.action_name == 'new' %>
+<%= f.input :priority, :collection => ['Yes', 'No'], :as => :radio_buttons ,:item_wrapper_class => 'inline',:checked => 'Yes',:label => "Share"  %>
+<% else %>
+<%= f.input :priority, :collection => ['Yes', 'No'], :as => :radio_buttons ,:item_wrapper_class => 'inline',:label => "Share"  %>
+<% end %> 
+    <%= f.input :attachment, as: :file %>
+  </div>
+
+  <div class="form-actions">
+	<%= link_to "Back", activities_path, :class => 'btn'%>
+     <% if controller.action_name == 'new' %>
+    <%= f.submit "Create Data", class: 'btn btn-primary' %>
+   <% else %> 
+   <%= f.submit "Update Data", class: 'btn btn-primary' %>
+   <% end %>
+  </div>
+<% end %>

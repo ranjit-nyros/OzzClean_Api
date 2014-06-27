@@ -1,0 +1,264 @@
+<script type="text/javascript">
+$(function(){
+// Datepicker
+$('#datepicker').datepicker({
+dateFormat:  'mm/dd/yy'
+});
+$('#datepicker1').datepicker({
+dateFormat:  'mm/dd/yy'
+});
+$('#datepicker2').datepicker({
+dateFormat:  'mm/dd/yy'
+});
+$('#datepicker3').datepicker({
+dateFormat:  'mm/dd/yy'
+});
+$('#datepicker4').datepicker({
+dateFormat:  'mm/dd/yy'
+});
+$('#datepicker5').datepicker({
+dateFormat:  'mm/dd/yy'
+});
+$('#datepicker6').datepicker({
+dateFormat:  'mm/dd/yy'
+});
+$('#datepicker7').datepicker({
+dateFormat:  'mm/dd/yy'
+});
+$('#datepicker8').datepicker({
+dateFormat:  'mm/dd/yy'
+});
+
+ 
+$("#dates").click(function () {
+  var $that = $(this);
+  $("#range").toggle("slow", function() {
+    $that.toggleClass("toggled-off");
+  });
+});
+
+
+$("#dates1").click(function () {
+  var $that = $(this);
+  $("#range1").toggle("slow", function() {
+    $that.toggleClass("toggled-off");
+  });
+});
+
+
+$("#dates2").click(function () {
+  var $that = $(this);
+  $("#range2").toggle("slow", function() {
+    $that.toggleClass("toggled-off");
+  });
+});
+
+
+$("#date").click(function () {
+  var $that = $(this);
+  $("#ranges").toggle("slow", function() {
+    $that.toggleClass("toggled-off");
+  });
+});		
+
+
+});
+</script>
+
+<div id="simple-search-form">
+  <%= search_form_for q,:url => search_list_cleans_path, :html => {method: :post, class: 'well form-search'}  do |f| %>
+  <fieldset>
+<%= f.text_field :source_or_upload_by_or_file_name_or_selection_query_or_cleaned_by_or_qa_by_or_qa_notes_or_newfile_or_status_cont, class: "input-medium search-query" %>
+    <button type="submit" class="btn btn-success">Search</button>&nbsp;&nbsp;
+    <a href="#" class="advance-search">Advanced</a>
+    &nbsp;&nbsp;
+    <%= link_to "Reset " , {:controller => "list_cleans", :action => "index" , :FILTER => @chosen } %>
+  <% end %>
+  </fieldset>
+</div>
+
+<div id="advance-search-form" style="display: none">
+  <%= search_form_for q,:url => search_list_cleans_path, :html => {method: :post, class: 'form-horizontal'}  do |f| %>
+  <fieldset>
+  <legend>Search List Cleans </legend>
+  <%= hidden_field_tag "test" '' %>
+<table>
+      <tr><td class="span6"><div class="control-group">
+    <%= f.label :date_cont, "Date", class: 'control-label' %>
+    <div class="controls">
+      <% if q.date_cont.blank? %>
+    <%= f.text_field :date_cont, include_blank: true, default: nil, :id => 'datepicker', :style=>"width:100px;" %> 
+      <% elsif !q.date_cont.blank? %>
+      <%= f.text_field :date_cont, :value => "#{change_date_format_for_edit_page(q.date_cont)}", :id => 'datepicker', :style=>"width:100px;" %> 
+      <% end %>&nbsp;<%= link_to "Select Range", "#", :id => 'dates' %> 
+      
+    </div>
+  </div>
+
+ <div class="control-group" id="range" style="display:none" >
+    <%= f.label :date_gteq, "Date Range", class: 'control-label' %>
+    <div class="controls">
+      <% if q.date_gteq.blank? %>
+      <%= f.text_field :date_gteq, include_blank: true, default: nil, :id => 'datepicker1', :style=>"width:100px;" %>
+      <% elsif !q.date_gteq.blank? %>
+      <%= f.text_field :date_gteq, :value => "#{change_date_format_for_edit_page(q.date_gteq)}", :id => 'datepicker1', :style=>"width:100px;" %> 
+      <% end %>
+       - 
+       <% if q.date_lteq.blank? %>
+      <%= f.text_field :date_lteq, include_blank: true, default: nil, :id => 'datepicker2', :style=>"width:100px;"  %>
+       <% elsif !q.date_lteq.blank? %>
+       <%= f.text_field :date_lteq, :value => "#{change_date_format_for_edit_page(q.date_lteq)}", :id => 'datepicker2', :style=>"width:100px;" %> 
+       <% end %>
+    </div>
+  </div>
+</td>
+  <td class="span3"><div class="control-group">
+    <%= f.label :source_cont, "Source", class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :source_cont %>
+    </div>
+  </div>
+  </td></tr>
+
+ <tr><td class="span3"><div class="control-group">
+     <%= f.label :upload_by_cont, "Uplaod By", class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :upload_by_cont %>
+    </div>
+  </div> </td>
+<td class="span3">
+ <div class="control-group">
+     <%= f.label :file_name_cont, "File Name", class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :file_name_cont %>
+    </div>
+  </div> </td></tr>
+<tr><td colspan="2">
+ <div class="control-group">
+    <%= f.label :selection_query_cont, "Selection Query", class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :selection_query_cont, :rows => "5", :class => "span8"  %>
+    </div>
+  </div>
+</td></tr>
+<tr><td class="span3">
+  <div class="control-group">
+    <%= f.label :cleaned_by_cont, "Cleaned By", class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :cleaned_by_cont %>
+    </div>
+  </div></td> 
+      <td class="span6"> <div class="control-group">
+    <%= f.label :clean_date_cont, "Clean Date", class: 'control-label' %>
+    <div class="controls">
+      <% if q.clean_date_cont.blank? %>
+    <%= f.text_field :clean_date_cont, include_blank: true, default: nil, :id => 'datepicker3', :style=>"width:100px;" %> 
+      <% elsif !q.clean_date_cont.blank? %>
+      <%= f.text_field :clean_date_cont, :value => "#{change_date_format_for_edit_page(q.clean_date_cont)}", :id => 'datepicker3', :style=>"width:100px;" %> 
+      <% end %>&nbsp;<%= link_to "Select Range", "#", :id => 'dates1' %> 
+      
+    </div>
+  </div>
+
+ <div class="control-group" id="range1" style="display:none" >
+    <%= f.label :clean_date_gteq, "Clean Date Range", class: 'control-label' %>
+    <div class="controls">
+      <% if q.clean_date_gteq.blank? %>
+      <%= f.text_field :clean_date_gteq, include_blank: true, default: nil, :id => 'datepicker4', :style=>"width:100px;" %>
+      <% elsif !q.clean_date_gteq.blank? %>
+      <%= f.text_field :clean_date_gteq, :value => "#{change_date_format_for_edit_page(q.clean_date_gteq)}", :id => 'datepicker4', :style=>"width:100px;" %> 
+      <% end %>
+       - 
+       <% if q.clean_date_lteq.blank? %>
+      <%= f.text_field :clean_date_lteq, include_blank: true, default: nil, :id => 'datepicker5', :style=>"width:100px;"  %>
+       <% elsif !q.clean_date_lteq.blank? %>
+       <%= f.text_field :clean_date_lteq, :value => "#{change_date_format_for_edit_page(q.clean_date_lteq)}", :id => 'datepicker5', :style=>"width:100px;" %> 
+       <% end %>
+    </div>
+  </div></td></tr>
+<tr><td>
+  <div class="control-group">
+    <%= f.label :no_of_records_eq, "Records", class: 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :no_of_records_eq %>
+    </div>
+  </div></td>
+  <td>
+  <div class="control-group">
+    <%= f.label :no_of_good_eq, "Good", class: 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :no_of_good_eq %>
+    </div>
+  </div>
+  </td></tr>
+  <tr><td><div class="control-group">
+    <%= f.label :qa_by_cont, "QA By", class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :qa_by_cont %>
+    </div>
+  </div></td>
+<td class="span6">
+ <div class="control-group">
+    <%= f.label :qa_date_cont, "QA Date", class: 'control-label' %>
+    <div class="controls">
+      <% if q.qa_date_cont.blank? %>
+    <%= f.text_field :qa_date_cont, include_blank: true, default: nil, :id => 'datepicker6', :style=>"width:100px;" %> 
+      <% elsif !q.qa_date_cont.blank? %>
+      <%= f.text_field :qa_date_cont, :value => "#{change_date_format_for_edit_page(q.qa_date_cont)}", :id => 'datepicker6', :style=>"width:100px;" %> 
+      <% end %>&nbsp;<%= link_to "Select Range", "#", :id => 'dates2' %> 
+      
+    </div>
+  </div>
+<div class="control-group" id="range2" style="display:none" >
+    <%= f.label :qa_date_gteq, "QA Date Range", class: 'control-label' %>
+    <div class="controls">
+      <% if q.qa_date_gteq.blank? %>
+      <%= f.text_field :qa_date_gteq, include_blank: true, default: nil, :id => 'datepicker7', :style=>"width:100px;" %>
+      <% elsif !q.qa_date_gteq.blank? %>
+      <%= f.text_field :qa_date_gteq, :value => "#{change_date_format_for_edit_page(q.qa_date_gteq)}", :id => 'datepicker7', :style=>"width:100px;" %> 
+      <% end %>
+       - 
+       <% if q.qa_date_lteq.blank? %>
+      <%= f.text_field :qa_date_lteq, include_blank: true, default: nil, :id => 'datepicker8', :style=>"width:100px;"  %>
+       <% elsif !q.qa_date_lteq.blank? %>
+       <%= f.text_field :qa_date_lteq, :value => "#{change_date_format_for_edit_page(q.qa_date_lteq)}", :id => 'datepicker8', :style=>"width:100px;" %> 
+       <% end %>
+    </div>
+  </div></td></tr>
+
+<tr><td colspan="2" class="span8">
+  <div class="control-group">
+    <%= f.label :qa_notes_cont, "QA Notes", class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :qa_notes_cont, :rows => "5", :class => "span8"  %>
+    </div>
+  </div>
+  </td></tr>
+<tr>
+<td>
+  <div class="control-group">
+    <%= f.label :status_eq, "Status", class: 'control-label' %>
+    <div class="controls">
+      <%= f.select :status_eq, collection: [["Select Status", ""], ["New File", "New File"],["Cleaned", "Cleaned"], ["QA Complete", "QA Complete"]] %>
+    </div>
+  </div>
+  </td>
+<td>
+  <div class="control-group">
+    <%= f.label :newfile_cont, "New File", class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :newfile_cont %>
+    </div>
+  </div>
+  </td>
+	
+</tr>
+</table>
+  
+  <div class="form-actions">
+    <%= f.submit class: 'btn btn-primary' %>
+    <a href="#" class="advance-search">simple</a>
+  </div>  
+  </fieldset>
+  <% end %>
+</div>

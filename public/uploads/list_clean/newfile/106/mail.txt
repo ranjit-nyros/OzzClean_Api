@@ -1,0 +1,30 @@
+To ranjit:
+=========
+
+Sir i include both mails in it.please check it and correct it.
+
+
+Good Evening Sir,
+
+To Client:
+==========
+
+We have configured applications(DBMap, MobiTracking, MobiAccount and ToolkitFramework) in new instance and also redirected the apps with their domains.
+
+Thanks,
+Team
+
+
+To Client:
+==========
+
+We have 5 remote databases in DBMap applications, that we need remote access for those in the new instance to access.
+
+Once we get remote access we will synchronize those databases to get all data in this new instance application.
+
+We are attaching details of remote databases with their ip's.
+
+Could you please check with Bhumish regrding remote access.
+
+Thanks,
+Team.

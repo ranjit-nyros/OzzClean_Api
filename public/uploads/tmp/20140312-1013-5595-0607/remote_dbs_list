@@ -1,0 +1,49 @@
+Domain: ozzmap.com
+Towers/DBMap Instance IP: 54.83.43.251
+
+Database Name :  DBMap_development
+MySql/Phpmyadmin Details:
+  	Username: root
+	Password: root
+
+
+Here are the list of IP details In which we need remote access to databases from our App Database: 
+
+1>  IP Address: 54.225.97.77
+    Database Type: Mysql 
+    Username: root
+    Passowrd: root
+    DB Name: liveace_development
+
+2>  IP Address: 54.235.134.134
+    Database Type: Mysql 
+    Username: remotemysql
+    Passowrd: MysqlServer*09
+    DB Name: honeys
+
+
+3>  IP Address: 54.225.115.10
+    Database Type: Mysql 
+    Username: root
+    Passowrd: MysqlServer*09
+    DB Name: dyr2_production
+
+4>  IP Address: 54.219.147.205
+    Database Type: Mysql
+    Username: root
+    Passowrd: 123456
+    DB Name: t3
+
+
+5>  IP Address: 50.62.209.17
+    Database Type: Mysql
+    Username: rubenskywalker
+    Passowrd: Rubens01
+    DB Name: rubenskywalker_test
+
+
+6>  IP Address: 54.84.103.205:5432
+    Database Type: Postgresql
+    Username: postgres
+    Passowrd: skywalker123
+    DB Name: devl01

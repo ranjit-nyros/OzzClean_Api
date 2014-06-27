@@ -1,0 +1,73 @@
+<%= render :partial => 'menu' %>
+<p>
+  <b>Date:</b>
+  <%= @list_clean.date %>
+</p>
+
+<p>
+  <b>Source:</b>
+  <%= @list_clean.source %>
+</p>
+
+<p>
+  <b>Upload by:</b>
+  <%= @list_clean.upload_by %>
+</p>
+
+<p>
+  <b>File name:</b>
+  <%= link_to File.basename(@list_clean.file_name.path), "#" if !@list_clean.file_name.path.nil? %>
+</p>
+
+<p>
+  <b>Selection query:</b>
+  <%= @list_clean.selection_query %>
+</p>
+
+<p>
+  <b>Cleaned by:</b>
+  <%= @list_clean.cleaned_by %>
+</p>
+
+<p>
+  <b>Clean date:</b>
+  <%= @list_clean.clean_date %>
+</p>
+
+<p>
+  <b>No of records:</b>
+  <%= @list_clean.no_of_records %>
+</p>
+
+<p>
+  <b>No of good:</b>
+  <%= @list_clean.no_of_good %>
+</p>
+
+<p>
+  <b>Qa by:</b>
+  <%= @list_clean.qa_by %>
+</p>
+
+<p>
+  <b>Qa date:</b>
+  <%= @list_clean.qa_date %>
+</p>
+
+<p>
+  <b>Qa notes:</b>
+  <%= @list_clean.qa_notes %>
+</p>
+
+<p>
+  <b>Status: </b>
+  <%= @list_clean.status %>
+</p>
+
+<p>
+  <b>New File</b>
+  <%= link_to File.basename(@list_clean.newfile.path), "#" if !@list_clean.newfile.path.nil? %>
+</p>
+<p class="well">
+<%= link_to 'Edit', edit_list_clean_path(@list_clean), :class => 'btn btn-primary' %>
+<%= link_to 'Back', list_cleans_path, :class => 'btn' %></p>

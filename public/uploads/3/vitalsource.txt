@@ -1,0 +1,26 @@
+Getting started
+
+    Install Grunt, including any related dependencies.
+
+    Install Sass, including any related dependencies.
+
+    Install the EditorConfig plugin for your text editor, to help maintain consistant coding style.
+
+    After cloning this repository, run the following command from the root of the project:
+
+    npm install
+
+    This will install dependencies into node_modules/.
+
+    To view the website, run the following command from the root of the project:
+
+    grunt floe
+
+    This will build production-ready files in /dist/. If you launch /dist/floe/test_index.html, you should be able to see examples of engines that have been built already.
+
+    During development, you can run the following command from the root of the project:
+
+    grunt watch
+
+    This will automatically rebuild the /dist/ folder when changes are made to the code. It also will run jshint and jscs to check for errors or style issues with your code.
+

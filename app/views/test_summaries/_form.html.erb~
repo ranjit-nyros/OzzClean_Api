@@ -1,0 +1,83 @@
+
+<script type="text/javascript">
+$(function(){
+// Datepicker
+	$('#datepicker').datepicker({
+	//inline: true
+		dateFormat: 'mm/dd/yy'
+	});
+$('#datepicker1').datepicker({
+	//inline: true
+		dateFormat: 'mm/dd/yy'
+	});
+</script>
+<script>
+	$(document).ready(function() {
+$('#filedisplay').attr('readonly', true)
+$('#test_summary_file').closest(".control-group").find("label").remove();
+	$('#test_summary_file').change(function() {
+    		$('#filedisplay').val($(this).val().replace(/^.*[\\\/]/, ''))
+
+  });
+  $('#upload-btn').click(function() {
+    $('#test_summary_file').click();
+  });
+
+
+});
+</script>
+
+<%= simple_form_for(@test_summary) do |f| %>
+  <%= f.error_notification %>
+  <div class="form-inputs">
+	<table><tr>
+    <td class="span3">
+	<% if @test_summary.test_date.blank? %>
+		<%= f.input :test_date, :as => :string, :label => "Date", :input_html => { :value => Time.now.strftime("%m/%d/%Y"), :style => 'width: 120px', :id => "datepicker"} %>
+	<% elsif !@test_summary.test_date.blank? %>
+		<%= f.input :test_date,  :as => :string,  :label => "Test Date",:input_html => { :id => 'datepicker', :value => change_date_format_for_edit_page(@test_summary.test_date) , :style => 'width: 120px'} %>
+	<% end %>	</td>
+    <td class="span3"><%= f.input :caller %></td>
+	</tr>
+	<tr><td colspan="2" class="span3"><%= f.input :script_summary, input_html: { class: 'span8', rows: 6, :style => 'height: 120px'} %></td></tr>
+
+	<tr><td class="span3"><%= f.input :test_size%></td>
+	<td class="span3"><%= f.input :num_of_interested %></td></tr>
+	<tr><td class="span3"><%= f.input :ap_names %></td>
+	<td class="span3"><%= f.input :cfo_names %></td></tr>
+	<tr><td class="span3"><%= f.input :owner_names %></td>
+	<td class="span3"><%= f.input :total_names %></td></tr>
+	<tr><td class="span3"><%= f.input :employe_size %></td>
+	<td class="span3"><%= f.input :dept_size %></td></tr>
+	<tr><td colspan="2" class="span6">
+		<div class="control-group file optional">
+			<label class="file optional control-label" for="test_summary_file">File</label>
+			<div class="controls">
+				<%= f.input :file %>
+			    	<div class="input-append span8">
+			      	<input id="filedisplay" class="input-large uneditable-input" type="text" style="margin-top: -80px;" value= <%= @test_summary.file_identifier if @test_summary.file? %> >
+			      	<a id="upload-btn" class="file optional btn" style="margin-top: -80px;"><i class="icon-upload-alt"></i> Browse</a>
+			    	</div>
+			  </div>
+			</div>
+		</td></tr>
+	<tr><td colspan="2"><%= f.input :notes, input_html: {class: 'span8', rows: 6, style: "height:120px" } %></td></tr>
+	<tr><td colspan="2"><%= f.input :test_goal, input_html: {class: 'span8', rows: 6, style: "height:200px" } %></td></tr>
+</table>
+  </div>
+
+  <div class="form-actions">
+	<%= link_to "Back", test_summaries_path, :class => 'btn'%>
+     <% if controller.action_name == 'new' %>
+    <%= f.submit "Create Test Summary", class: 'btn btn-primary' %>
+   <% else %> 
+   <%= f.submit "Update Test Summary", class: 'btn btn-primary' %>
+   <% end %>
+  </div>
+<% end %>
+<style>
+	#test_summary_file {
+		filter: {opacity:0};
+		opacity:0
+	}
+</style>

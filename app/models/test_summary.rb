@@ -1,0 +1,10 @@
+class TestSummary < ActiveRecord::Base
+   attr_accessible :test_date, :caller, :script_summary, :test_size, :num_of_interested, :ap_names, :cfo_names, :owner_names, :total_names, :employe_size, :dept_size, :user_id, :organization_id, :file, :notes, :test_goal
+
+belongs_to :organization
+belongs_to :user
+
+#before_create :upload_file, :file
+mount_uploader :file, FileUploader
+
+end

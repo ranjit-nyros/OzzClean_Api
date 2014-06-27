@@ -1,0 +1,132 @@
+<script type="text/javascript">
+$(function(){
+// Datepicker
+	$('#datepicker').datepicker({
+	//inline: true
+		dateFormat: 'mm/dd/yy'
+	});
+$('#datepicker1').datepicker({
+	//inline: true
+		dateFormat: 'mm/dd/yy'
+	});
+$('#datepicker2').datepicker({
+	//inline: true
+		dateFormat: 'mm/dd/yy'
+	});
+
+});
+</script>
+
+<script>
+$(document).ready(function() {
+$('#filedisplay').attr('readonly', true)
+$('#file-display').attr('readonly', true)
+$('#list_clean_newfile').closest(".control-group").find("label").remove();
+	$('#list_clean_newfile').change(function() {
+	    		$('#file-display').val($(this).val().replace(/^.*[\\\/]/, ''))
+
+  });
+  $('#upload-btn').click(function() {
+    $('#list_clean_newfile').click();
+  });
+$('#list_clean_file_name').closest(".control-group").find("label").remove();
+	$('#list_clean_file_name').change(function() {
+    		$('#filedisplay').val($(this).val().replace(/^.*[\\\/]/, ''))
+
+  });
+  $('#uploading-btn').click(function() {
+    $('#list_clean_file_name').click();
+  });
+
+});
+</script>
+
+
+
+<%= simple_form_for(@list_clean) do |f| %>
+  <%= f.error_notification %>
+  <div class="form-inputs">
+	<table><tr>
+    <td class="span3">
+	<% if @list_clean.date.blank? %>
+		<%= f.input :date, :as => :string, :label => "Date", :input_html => { :value => Time.now.strftime("%m/%d/%Y"), :style => 'width: 120px', :id => "datepicker"} %>
+	<% elsif !@list_clean.date.blank? %>
+		<%= f.input :date,  :as => :string,  :label => "Date",:input_html => { :id => 'datepicker', :value => change_date_format_for_edit_page(@list_clean.date) , :style => 'width: 120px'} %>
+	<% end %>	</td>
+    <td class="span3"><%= f.input :source %></td>
+	</tr>
+	<tr><td class="span3"><%= f.input :upload_by %></td>
+	<td class="span6">
+			<div class="control-group">
+			  <div class="attach-set">
+				<label class="control-label">File Name</label>
+				<div class="controls">
+				<%= f.input :file_name, as: :file %>
+			    <div class="input-append span8">
+				<% @file= @list_clean.file_name_identifier if @list_clean.file_name? %>
+			       <input id="filedisplay" class="input-large uneditable-input" type="text" style="margin-top: -80px;" value= <%= @file %> >
+			      <a id="uploading-btn" class="btn" style="margin-top: -80px;"><i class="icon-upload-alt"></i> Browse</a>
+			    </div>
+			  </div>
+			</div>
+			</div>
+			</div>
+		</td>
+		</tr>
+	<tr><td colspan="2" class="span3"><%= f.input :selection_query, input_html: { class: 'span8 text', rows: 4, :style => 'height: 120px'} %></td></tr>
+	<tr><td class="span3"><%= f.input :cleaned_by%></td>
+	<td class="span3"><% if @list_clean.clean_date.blank? %>
+	    <%= f.input :clean_date, :as => :string, :label => "Clean Date", :input_html => {:style => 'width: 120px', :id => "datepicker1"}%>
+	<% elsif !@list_clean.clean_date.blank? %>
+		<%= f.input :clean_date,  :as => :string,  :label => "Clean Date",:input_html => { :id => 'datepicker1', :value => change_date_format_for_edit_page(@list_clean.clean_date) , :style => 'width: 120px'} %>
+	<% end %></td></tr>
+	<tr><td class="span3"><%= f.input :no_of_records %></td>
+	<td class="span3"><%= f.input :no_of_good %></td></tr>
+	<tr><td class="span3"><%= f.input :qa_by %></td>
+	<td class="span3"><% if @list_clean.qa_date.blank? %>
+	    <%= f.input :qa_date, :as => :string, :label => "QA Date", :input_html => { :style => 'width: 120px', :id => "datepicker2" }%>
+	<% elsif !@list_clean.clean_date.blank? %>
+		<%= f.input :qa_date,  :as => :string,  :label => "QA Date",:input_html => { :id => 'datepicker2', :value => change_date_format_for_edit_page(@list_clean.qa_date) , :style => 'width: 120px'} %>
+	<% end %></td></tr>
+	<tr><td colspan="2" class="span3"><%= f.input :qa_notes, input_html: { class: 'span8 text', rows: 4, :style => 'height: 150px' } %></td></tr>
+	<tr>
+		<td><%= f.input :status, as: :select, collection: [["New File", "New File"],["Cleaned", "Cleaned"], ["QA Complete", "QA Complete"]], :prompt => "Select Status" %></td>
+		<td class="span6">
+			<div class="control-group">
+			  <div class="attach-set">
+				<label class="control-label">New File</label>
+				<div class="controls">
+				<%= f.input :newfile %>
+			    <div class="input-append span8">
+			      <input id="file-display" class="input-large uneditable-input" type="text" style="margin-top: -80px;" value= <%= @list_clean.newfile_identifier if @list_clean.newfile? %> >
+			      <a id="upload-btn" class="btn" style="margin-top: -80px;"><i class="icon-upload-alt"></i> Browse</a>
+			    </div>
+			  </div>
+			</div>
+			</div>
+			</div>
+		</td>
+	</tr> 
+</table>
+  </div>
+
+  <div class="form-actions">
+	<%= link_to "Back", list_cleans_path, :class => 'btn'%>
+     <% if controller.action_name == 'new' %>
+    <%= f.submit "Create List", class: 'btn btn-primary' %>
+   <% else %> 
+   <%= f.submit "Update List", class: 'btn btn-primary' %>
+   <% end %>
+  </div>
+<% end %>
+
+<style>
+#list_clean_newfile {
+   filter: alpha(opacity=0);
+   opacity: 0;
+}
+#list_clean_file_name {
+   filter: alpha(opacity=0);
+   opacity: 0;
+}
+</style>

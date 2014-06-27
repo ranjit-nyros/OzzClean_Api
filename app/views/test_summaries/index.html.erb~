@@ -1,0 +1,80 @@
+<div class="container-fluid">
+	<%= render :partial =>'menu' %>
+	<%= render :partial => 'search_form', :locals => {q: @q}%>
+ <% if @test_summaries.blank? %>
+    <p class="well">You don't currently have any data </p>
+  <% else %>
+    <h2>Your Test Summary </h2>
+    <p>Displaying <strong><%= @test_summaries.offset_value + 1 %> - <%= @test_summaries.offset_value + @test_summaries.length %> of <%= @test_summaries.total_count %></strong> records </p>
+<table class="table table-striped responsive"  style = "width:1300px; margin-left:-180px">
+  <tr>
+        <th><%= sort_link(@q, :test_date, "Test Date") %></th>
+	<th><%= sort_link(@q, :caller, "Caller") %></th>
+	<th><%= sort_link(@q, :script_summary, "Script Summary") %> </th>
+	<th><%= sort_link(@q, :test_size, "Test Size") %> </th>
+	<th><%= sort_link(@q, :num_of_interested, "#Interested") %> </th>
+	<th><%= sort_link(@q, :ap_names, "Ap Names") %></th>
+	<th><%= sort_link(@q, :cfo_names, "CFO Names") %></th>
+	<th><%= sort_link(@q, :owner_names, "Owner Names") %></th>
+	<th><%= sort_link(@q, :total_names, "Total Names") %></th>
+	<th><%= sort_link(@q, :employe_size, "Employee Size") %></th>
+	<th><%= sort_link(@q, :dept_size, "Department Size") %></th>
+	<th><%= sort_link(@q, :file, "File") %></th>
+	<th><%= sort_link(@q, :notes, "Notes") %></th>
+	<th width="200px;"><%= sort_link(@q, :test_goal, "Test Goal") %></th>
+	<th></th>
+  </tr>
+	<% total = 0 %>
+	<% total1 = 0 %>
+	<% total2 = 0 %>
+	<% total3 = 0 %>
+	<% total4 = 0 %>
+	<% total5 = 0 %>
+	<% total6 = 0 %>
+	<% total7 = 0 %>
+<% @test_summaries.each do |test_summary| %>
+  <tr>
+	<td><%= test_summary.test_date %></td>
+	<td><%= test_summary.caller %></td>
+	<td><%= test_summary.script_summary %></td>
+	<td><%= test_summary.test_size %></td>
+	<% total = total + test_summary.test_size if !test_summary.test_size.nil?%>
+	<td><%= test_summary.num_of_interested %></td>
+	<% total1 = total1 + test_summary.num_of_interested if !test_summary.num_of_interested.nil?%>
+	<td><%= test_summary.ap_names %></td>
+	<% total2 = total2 + test_summary.ap_names if !test_summary.ap_names.nil?%>
+	<td><%= test_summary.cfo_names %></td>
+	<% total3 = total3 + test_summary.cfo_names if !test_summary.cfo_names.nil?%>
+	<td><%= test_summary.owner_names %></td>
+	<% total4 = total4 + test_summary.owner_names if !test_summary.owner_names.nil?%>
+	<td><%= test_summary.total_names %></td>
+	<% total5 = total5 + test_summary.total_names if !test_summary.total_names.nil?%>
+	<td><%= test_summary.employe_size %></td>
+	<% total6 = total6 + test_summary.employe_size if !test_summary.employe_size.nil?%>
+	<td><%= test_summary.dept_size %></td>
+	<% total7 = total7 + test_summary.dept_size if !test_summary.dept_size.nil?%>
+	<td><%= File.basename(test_summary.file.path) if !test_summary.file.blank? %></td>
+	<td><%= test_summary.notes %></td>
+	<td width="200px;"><%= test_summary.test_goal %></td>
+    <td><%= link_to 'Show', test_summary , :class => 'btn btn-mini'%>
+    <%= link_to 'Edit', edit_test_summary_path(test_summary) , :class => 'btn btn-mini btn-primary' %>
+    <%= link_to 'Destroy', test_summary, confirm: 'Are you sure?', method: :delete , :class => 'btn btn-danger btn-mini' %></td>
+  </tr>
+<% end %>
+	<tr>
+		<td><b>Totals:</b></td>
+		<td colspan="2"></td>
+		<td><b><%= total %></b></td>
+		<td><b><%= total1 %></b></td>
+		<td><b><%= total2 %></b></td>
+		<td><b><%= total3 %></b></td>
+		<td><b><%= total4 %></b></td>
+		<td><b><%= total5 %></b></td>
+		<td><b><%= total6 %></b></td>
+		<td><b><%= total7 %></b></td>
+		<td colspan="4"></td>
+	</tr>
+</table>
+<% end %>
+<%= paginate @test_summaries %>
+</div>

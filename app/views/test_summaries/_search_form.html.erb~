@@ -1,0 +1,215 @@
+<script type="text/javascript">
+$(function(){
+// Datepicker
+$('#datepicker').datepicker({
+dateFormat:  'mm/dd/yy'
+});
+$('#datepicker1').datepicker({
+dateFormat:  'mm/dd/yy'
+});
+$('#datepicker2').datepicker({
+dateFormat:  'mm/dd/yy'
+});
+$('#datepicker3').datepicker({
+dateFormat:  'mm/dd/yy'
+});
+$('#datepicker4').datepicker({
+dateFormat:  'mm/dd/yy'
+});
+$('#datepicker5').datepicker({
+dateFormat:  'mm/dd/yy'
+});
+$('#datepicker6').datepicker({
+dateFormat:  'mm/dd/yy'
+});
+$('#datepicker7').datepicker({
+dateFormat:  'mm/dd/yy'
+});
+$('#datepicker8').datepicker({
+dateFormat:  'mm/dd/yy'
+});
+
+ 
+$("#dates").click(function () {
+  var $that = $(this);
+  $("#range").toggle("slow", function() {
+    $that.toggleClass("toggled-off");
+  });
+});
+
+
+$("#dates1").click(function () {
+  var $that = $(this);
+  $("#range1").toggle("slow", function() {
+    $that.toggleClass("toggled-off");
+  });
+});
+
+
+$("#dates2").click(function () {
+  var $that = $(this);
+  $("#range2").toggle("slow", function() {
+    $that.toggleClass("toggled-off");
+  });
+});
+
+
+$("#date").click(function () {
+  var $that = $(this);
+  $("#ranges").toggle("slow", function() {
+    $that.toggleClass("toggled-off");
+  });
+});		
+
+
+});
+</script>
+
+<div id="simple-search-form">
+  <%= search_form_for q,:url => search_test_summaries_path, :html => {method: :post, class: 'well form-search'}  do |f| %>
+  <fieldset>
+<%= f.text_field :caller_or_script_summary_or_file_or_notes_or_test_goal_or_test_size_or_num_of_interested_or_ap_names_or_cfo_names_or_owner_names_or_total_names_or_employe_size_or_dept_size_eq, class: "input-medium search-query" %>
+    <button type="submit" class="btn btn-success">Search</button>&nbsp;&nbsp;
+    <a href="#" id="advance-search">Advanced</a>
+    &nbsp;&nbsp;
+    <%= link_to "Reset " , {:controller => "test_summaries", :action => "index" , :FILTER => @chosen } %>
+  <% end %>
+  </fieldset>
+</div>
+
+<div id="advance-search-form" style="display: none">
+  <%= search_form_for q,:url => search_test_summaries_path, :html => {method: :post, class: 'form-horizontal'}  do |f| %>
+  <fieldset>
+  <legend>Search Test Summary </legend>
+<table>
+      <tr><td class="span6"><div class="control-group">
+    <%= f.label :test_date_cont, "Test Date", class: 'control-label' %>
+    <div class="controls">
+      <% if q.test_date_cont.blank? %>
+    <%= f.text_field :test_date_cont, include_blank: true, default: nil, :id => 'datepicker', :style=>"width:100px;" %> 
+      <% elsif !q.test_date_cont.blank? %>
+      <%= f.text_field :test_date_cont, :value => "#{change_date_format_for_edit_page(q.test_date_cont)}", :id => 'datepicker', :style=>"width:100px;" %> 
+      <% end %>&nbsp;<%= link_to "Select Range", "#", :id => 'dates' %> 
+      
+    </div>
+  </div>
+
+ <div class="control-group" id="range" style="display:none" >
+    <%= f.label :test_date_gteq, "Test Date Range", class: 'control-label' %>
+    <div class="controls">
+      <% if q.test_date_gteq.blank? %>
+      <%= f.text_field :test_date_gteq, include_blank: true, default: nil, :id => 'datepicker1', :style=>"width:100px;" %>
+      <% elsif !q.test_date_gteq.blank? %>
+      <%= f.text_field :test_date_gteq, :value => "#{change_date_format_for_edit_page(q.test_date_gteq)}", :id => 'datepicker1', :style=>"width:100px;" %> 
+      <% end %>
+       - 
+       <% if q.test_date_lteq.blank? %>
+      <%= f.text_field :test_date_lteq, include_blank: true, default: nil, :id => 'datepicker2', :style=>"width:100px;"  %>
+       <% elsif !q.test_date_lteq.blank? %>
+       <%= f.text_field :test_date_lteq, :value => "#{change_date_format_for_edit_page(q.test_date_lteq)}", :id => 'datepicker2', :style=>"width:100px;" %> 
+       <% end %>
+    </div>
+  </div>
+</td>
+  <td class="span3"><div class="control-group">
+    <%= f.label :caller_cont, "Caller", class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :caller_cont %>
+    </div>
+  </div>
+  </td></tr>
+
+<tr><td colspan="2">
+ <div class="control-group">
+    <%= f.label :script_summary_cont, "Script Summary", class: 'control-label' %>
+    <div class="controls span6">
+      <%= f.text_area :script_summary_cont, :rows => "5", :class => "span8"  %>
+    </div>
+  </div>
+</td></tr>
+<tr><td class="span3">
+  <div class="control-group">
+    <%= f.label :test_size_eq, "Test Size", class: 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :test_size_eq %>
+    </div>
+  </div></td> 
+      <td class="span4">
+	<div class="control-group">
+    <%= f.label :num_of_interested_eq, "#Interested", class: 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :num_of_interested_eq %>
+    </div>
+  </div></td></tr>
+<tr><td>
+  <div class="control-group">
+    <%= f.label :ap_names_eq, "Ap Names", class: 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :ap_names_eq %>
+    </div>
+  </div></td>
+  <td>
+  <div class="control-group">
+    <%= f.label :cfo_names_eq, "CFO Names", class: 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :cfo_names_eq %>
+    </div>
+  </div>
+  </td></tr>
+  <tr><td><div class="control-group">
+    <%= f.label :owner_names_eq, "Owner Names", class: 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :owner_names_eq %>
+    </div>
+  </div></td>
+<td class="span4">
+<div class="control-group">
+    <%= f.label :total_names_eq, "Total Names", class: 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :total_names_eq %>
+    </div>
+  </div>
+ </td></tr>
+
+<tr><td class="span4">
+<div class="control-group">
+    <%= f.label :employe_size_eq, "Employee Size", class: 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :employe_size_eq %>
+    </div>
+  </div>
+ </td>
+<td class="span4">
+<div class="control-group">
+    <%= f.label :dept_size_eq, "Department Size", class: 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :dept_size_eq %>
+    </div>
+  </div>
+ </td>
+</tr>
+<tr><td colspan="2" class="span6">
+ <div class="control-group">
+    <%= f.label :notes_cont, "Notes", class: 'control-label' %>
+    <div class="controls span6">
+      <%= f.text_area :notes_cont, :rows => "5", :class => "span8" %>
+    </div>
+  </div>
+</td></tr>
+<tr><td colspan="2">
+ <div class="control-group">
+    <%= f.label :test_goal_cont, "Test Goal", class: 'control-label' %>
+    <div class="controls span6">
+      <%= f.text_area :test_goal_cont, :rows => "5", :class => "span8" %>
+    </div>
+  </div>
+</td></tr>
+</table>
+  
+  <div class="form-actions">
+    <%= f.submit class: 'btn btn-primary' %>
+    <a href="#" id="advance-search">simple</a>
+  </div>  
+  </fieldset>
+  <% end %>
+</div>

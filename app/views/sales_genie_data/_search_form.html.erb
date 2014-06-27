@@ -1,0 +1,205 @@
+<script type="text/javascript">
+$(function(){
+// Datepicker
+$('#datepicker').datepicker({
+dateFormat:  'mm/dd/yy'
+});
+$('#datepicker1').datepicker({
+dateFormat:  'mm/dd/yy'
+});
+$('#datepicker2').datepicker({
+dateFormat:  'mm/dd/yy'
+});
+$('#datepicker3').datepicker({
+dateFormat:  'mm/dd/yy'
+});
+$('#datepicker4').datepicker({
+dateFormat:  'mm/dd/yy'
+});
+$('#datepicker5').datepicker({
+dateFormat:  'mm/dd/yy'
+});
+$('#datepicker6').datepicker({
+dateFormat:  'mm/dd/yy'
+});
+$('#datepicker7').datepicker({
+dateFormat:  'mm/dd/yy'
+});
+$('#datepicker8').datepicker({
+dateFormat:  'mm/dd/yy'
+});
+
+ 
+$("#dates").click(function () {
+  var $that = $(this);
+  $("#range").toggle("slow", function() {
+    $that.toggleClass("toggled-off");
+  });
+});
+
+
+$("#dates1").click(function () {
+  var $that = $(this);
+  $("#range1").toggle("slow", function() {
+    $that.toggleClass("toggled-off");
+  });
+});
+
+
+$("#dates2").click(function () {
+  var $that = $(this);
+  $("#range2").toggle("slow", function() {
+    $that.toggleClass("toggled-off");
+  });
+});
+
+
+$("#date").click(function () {
+  var $that = $(this);
+  $("#ranges").toggle("slow", function() {
+    $that.toggleClass("toggled-off");
+  });
+});		
+
+});
+</script>
+
+<div id="simple-search-form">
+  <%= search_form_for q,:url => search_sales_genie_data_path, :html => {method: :post, class: 'well form-search'}  do |f| %>
+  <fieldset>
+
+<%= f.text_field :phone_num_or_company_or_city_or_state_or_zip_or_sic_cont, class: "input-medium search-query" %>
+    <button type="submit" class="btn btn-success">Search</button>&nbsp;&nbsp;
+    <a href="#" class="advance-search">Advanced</a>
+    &nbsp;&nbsp;
+    <%= link_to "Reset " , {:controller => "sales_genie_data", :action => "index" , :FILTER => @chosen } %>
+      <input type="hidden" name = "up">
+   <input type="hidden" id="myid" value='<%= @choosed if !@choosed.blank? %>'>
+  <% end %>
+  </fieldset>
+</div>
+
+
+<div id="advance-search-form" style="display: none">
+  <%= search_form_for q,:url => search_sales_genie_data_path, :html => {method: :post, class: 'form-horizontal'}  do |f| %>
+  <fieldset>
+  <legend>Search Sales Genie Data </legend>
+<table>
+      <tr><td class="span3"><div class="control-group">
+    <%= f.label :company_cont, "Company", class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :company_cont %>
+    </div>
+  </div>
+  </td>
+ <td class="span3"><div class="control-group">
+     <%= f.label :phone_num_cont, "Phone", class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :phone_num_cont %>
+    </div>
+  </div> </td></tr>
+<tr><td class="span3">
+ <div class="control-group">
+     <%= f.label :sic_cont, "SIC", class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :sic_cont %>
+    </div>
+  </div> </td>
+<td colspan="2" class="span3">
+ <div class="control-group">
+    <%= f.label :state_in, "State List", class: 'control-label' %>
+    <div class="controls">
+       <% if !params[:q].nil? %>
+        <% if (!params[:q][:state_in].nil? && !params[:q][:state_in].empty?) %>
+      <%= f.text_field :state_in,  "data-autocomplete"=> sales_genie_data_autocomplete_sales_genie_datum_state_path, 'data-delimiter' => ',', :multiple => true, :value => params[:q][:state_in] %>
+        <% else %>
+               <%= f.text_field :state_in,  "data-autocomplete"=> sales_genie_data_autocomplete_sales_genie_datum_state_path, 'data-delimiter' => ',', :multiple => true, :value => ''%>
+       <% end %>
+      <% else %>
+      <%= f.text_field :state_in,  "data-autocomplete"=> sales_genie_data_autocomplete_sales_genie_datum_state_path, 'data-delimiter' => ',', :multiple => true%>
+      <% end %>
+    </div>
+  </div>
+</td></tr>
+<tr><td class="span3">
+  <div class="control-group">
+    <%= f.label :zip_in, "ZIP List", class: 'control-label' %>
+    <div class="controls">
+      <%#= f.text_field :zip_in, :autocomplete => sales_genie_data_autocomplete_zip_in_path %>
+<%#= f.text_field :zip_in, "data-autocomplete" => sales_genie_data_autocomplete_sales_genie_datum_zip_path %>
+      <%#= f.select(:zip_in, SalesGenieDatum.all.map{|p| [p.zip, p.zip]}.uniq, {:prompt => "Select Zip"}, {:multiple => true}) %>
+    <%#= autocomplete_field_tag 'zip_in', '', sales_genie_data_autocomplete_sales_genie_datum_zip_path %>
+    <% if !params[:q].nil? %>
+      <% if (!params[:q][:zip_in].nil? && !params[:q][:zip_in].empty?) %>
+    <%= f.text_field :zip_in,  "data-autocomplete"=> sales_genie_data_autocomplete_sales_genie_datum_zip_path, 'data-delimiter' => ',', :multiple => true, :value => params[:q][:zip_in] %>
+        <% else %>
+        <%= f.text_field :zip_in,  "data-autocomplete"=> sales_genie_data_autocomplete_sales_genie_datum_zip_path, 'data-delimiter' => ',', :multiple => true, :value => '' %>
+       <% end %>
+    <% else %>
+    <%= f.text_field :zip_in,  "data-autocomplete"=> sales_genie_data_autocomplete_sales_genie_datum_zip_path, 'data-delimiter' => ',', :multiple => true%>
+    <% end %>
+
+    </div>
+  </div></td> 
+      </td>
+<td>
+  <div class="control-group">
+    <%= f.label :city_cont, "City", class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :city_cont %>
+    </div>
+  </div></td></tr>
+  <tr>
+    <td><div class="control-group">
+  <%= f.label :title_in, "Title", class: 'control-label' %>
+  <div class="controls">
+   <% if !params[:q].nil? %>
+    <%= f.select :title_in, SalesGenieDatum.group(:title).map{|p| [p.title, p.title].compact.reject(&:empty?)}.reject(&:empty?), {:prompt => "Select Title"}, {:selected => params[:q][:title_in], :multiple => true, :size => 6} %>
+   <% else %>
+    <%= f.select :title_in, SalesGenieDatum.group(:title).map{|p| [p.title, p.title].compact.reject(&:empty?)}.reject(&:empty?), {:prompt => "Select Title"}, {:multiple => true, :size => 6} %>
+	<% end %>
+  </div>
+</div>
+
+  </tr>
+<tr>
+  <td><div class="control-group">
+  <%= f.label :sales_volume_in, "Sales Range", class: 'control-label' %>
+  <div class="controls">
+   <% if !params[:q].nil? %>
+    <%= f.select :sales_volume_in, SalesGenieDatum.all.map{|p| [p.sales_volume, p.sales_volume].compact.reject(&:empty?)}.uniq.reject(&:empty?), {:prompt => "Select Sales Range"}, {:selected => params[:q][:sales_volume_in], :multiple => true, :size => 6} %>
+   <% else %>
+    <%= f.select :sales_volume_in, SalesGenieDatum.all.map{|p| [p.sales_volume, p.sales_volume].compact.reject(&:empty?)}.uniq.reject(&:empty?), {:prompt => "Select Sales Range"}, {:multiple => true, :size => 6} %>
+   <% end %>
+  </div>
+</div></td>
+<td><div class="control-group">
+  <%= f.label :contact_in, "Employee", class: 'control-label' %>
+  <div class="controls">
+<% if !params[:q].nil? %>
+    <%= f.select :contact_in, SalesGenieDatum.all.map{|p| q =  p.contact.split('/'); (!q[0].nil? || !q[1].nil?) ? [[q[0],q[1]].join(' '),[q[0],q[1],q[2],q[3]].join('/')].compact : ''}.reject(&:empty?), {:prompt => "Select Employee"}, {:selected => params[:q][:contact_in], :multiple => true, :size => 6} %>
+   <% else %>
+    <%= f.select :contact_in, SalesGenieDatum.all.map{|p| q =  p.contact.split('/'); (!q[0].nil? || !q[1].nil?) ? [[q[0],q[1]].join(' '),[q[0],q[1],q[2],q[3]].join('/')] : ''}.reject(&:empty?), {:prompt => "Select Employee"}, {:multiple => true, :size => 6} %>
+   <% end %>
+  </div>
+</div></td>
+</tr>
+<tr>
+  <td colspan="2"><div class="control-group">
+  <%= f.label :sic_description_cont, "SIC Description", class: 'control-label' %>
+  <div class="controls">
+      <%= f.text_area :sic_description_cont, :rows => "5", :class => "span8"  %>
+  </div>
+</div></td></tr>
+</table>
+  
+  <div class="form-actions">
+    <%= f.submit class: 'btn btn-primary' %>
+    <a href="#" class="advance-search">simple</a>
+        <%= link_to "Reset " , {:controller => "sales_genie_data", :action => "index" , :FILTER => @chosen } %>
+  </div>  
+    <input type="hidden" name = "up">
+   <input type="hidden" id="myid" value='<%= @choosed if !@choosed.blank? %>'>
+  </fieldset>
+  <% end %>
+</div>
