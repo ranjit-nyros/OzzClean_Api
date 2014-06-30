@@ -38,7 +38,7 @@
             <li class="<%= menu_active('admin/admin') %>"><%= link_to "Home", list_cleans_url %></li>
             <li class="<%= menu_active('admin/users') %>"><%= link_to "Users", admin_users_url %></li>
             <li class="<%= menu_active('ozzmenu') %>"><%= link_to "OzzMenu", ozzmenu_url %></li>
-           <!-- <li class="<%= menu_active('admin/folders') %>"><%#= link_to "Drives", admin_folders_url %></li> -->
+           <!-- <li class="<%#= menu_active('admin/folders') %>"><%#= link_to "Drives", admin_folders_url %></li> -->
           <% end %>
           
           <% if current_user %>	
@@ -47,8 +47,8 @@
             <li class="<%= menu_active('list_cleans') %>"><%= link_to "List Clean", list_cleans_url %></li>
 	    <li class="<%= menu_active('sales_genie_data') %>"><%= link_to "Sales Genie Data", sales_genie_data_url %></li>
 	    <li class="<%= menu_active('test_summaries') %>"><%= link_to "Test Summary", test_summaries_url %></li>
-           <!-- <li class="<%= menu_active('admin/links') %>"><%#= link_to "Links/URL", admin_links_url %></li>
-            <li class="<%= menu_active('admin/personal_links') %>"><%#= link_to "Personalize", admin_personal_links_url %></li> -->
+           <!-- <li class="<%#= menu_active('admin/links') %>"><%#= link_to "Links/URL", admin_links_url %></li>
+            <li class="<%#= menu_active('admin/personal_links') %>"><%#= link_to "Personalize", admin_personal_links_url %></li> -->
           <% end %>
           
         </ul>
@@ -151,7 +151,7 @@
 		<!-- Footer start -->
     <p style="float:left" class="ftspans"><span>Copyright&nbsp;&copy;&nbsp;OzzClean</span>    </p>
     <p style="float:right" class="ftspans">   
-      <span><%= link_to "API for Developers", "/developers" ,:style=>"color:white;" %></span>
+      <span><%= link_to "API for Developers", "/api_keys" ,:style=>"color:white;" %></span>
       <span><%= link_to "Contact Us", "/contact_us" ,:style=>"color:white;" %></span>
       <span><%= link_to "Privacy", "/privacy" ,:style=>"color:white;" %></span>
       <span><%= link_to "Legal", "/legal" ,:style=>"color:white;" %>&nbsp;&nbsp;&nbsp;</span>   
