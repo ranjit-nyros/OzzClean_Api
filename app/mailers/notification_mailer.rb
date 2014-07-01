@@ -42,7 +42,7 @@ end
       @email = email
       @token = token
       
-         mail(:from => "OzzClean<pramodv_nyros@yahoo.com>",
+         mail(:from => "OzzClean<ranzit005@gmail.com>",
                :to => @email,
                
                :subject =>'API Key Request',

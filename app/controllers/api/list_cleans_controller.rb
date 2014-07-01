@@ -6,11 +6,15 @@ module Api
       respond_to :json
 
       def index
-        respond_with ListClean.all
+        @api_key = ApiKey.find_by_access_token(params[:access_token])
+        @list_cleans = ListClean.find(:all ,:conditions =>["user_id = ? and organization_id = ?",@api_key.user_id ,@api_key.organization_id]) if @api_key
+        respond_with @list_cleans.count
       end
 
       def show
-        respond_with ListClean.find(params[:id])
+        @api_key = ApiKey.find(params[:access_token])
+        @list_clean = ListClean.find(params[:id].to_i) if @api_key
+        respond_with @list_clean.count
       end
 
       def create
