@@ -3,21 +3,21 @@ class NotificationMailer < ActionMailer::Base
 
    def testmail
    
-    mail(:from => "OzzData<noreply@ozzdata.com>",
-       :to => "ratnakarrao_nyros@yahoo.com",
+    mail(:from => "OzzClean<pramodv_nyros@yahoo.com>",
+       :to => "ranjit.nyros@gmail.com",
        :subject => "account notification")
    end
    
    def create_account(user)
      @user=user
-    mail(:from => "OzzData<noreply@ozzdata.com>",
+    mail(:from => "OzzClean<pramodv_nyros@yahoo.com>",
          :to => "anusha_nyros@yahoo.com",
          :subject => "new account notification")
    end  
 
     def orguser_notify(user)
         @user=user
-         mail(:from => "OzzData<noreply@ozzdata.com>",
+         mail(:from => "OzzClean<pramodv_nyros@yahoo.com>",
          :to => "anusha_nyros@yahoo.com",
          :subject => "new account notification")
     end  
@@ -42,7 +42,7 @@ end
       @email = email
       @token = token
       
-         mail(:from => "OzzClean<ranzit005@gmail.com>",
+         mail(:from => "OzzClean<pramodv_nyros@yahoo.com>",
                :to => @email,
                
                :subject =>'API Key Request',
@@ -55,7 +55,7 @@ def thanks_feedback_email(first_name,last_name,email)
       @last_name = last_name
       @email = email
 
-         mail(:from => "OzzData<noreply@ozzdata.com>",
+         mail(:from => "OzzData<ranjit.nyros@gmail.com",
                :to => email,
                :subject => "Thank You  ",
                :date => Time.now)
@@ -64,8 +64,8 @@ end
 
 def login_mail(user)
 		@user = user
-		mail(:from => "OzzData<noreply@ozzdata.com>",
-               :to => "anusha_nyros@yahoo.com",
+		mail(:from => "OzzClean<ranzit005@gmail.com>",
+               :to => "ranjit_nyros@yahoo.com",
                :subject => "#{user.capitalize} has Logged In",
                :date => Time.now)
 	end

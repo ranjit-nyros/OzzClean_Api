@@ -12,5 +12,6 @@ class Organization < ActiveRecord::Base
   has_many :folders
   has_many :sales_genie_data, dependent: :destroy
   has_many :test_summaries, dependent: :destroy
+  has_many :api_keys ,dependent: :destroy
 
 end

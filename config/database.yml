@@ -16,3 +16,12 @@ development:
   pool: 5
   username: root
   password: root
+
+production:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: ozzclean_dev
+  pool: 5
+  username: root
+  password: root

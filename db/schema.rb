@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140627091415) do
+ActiveRecord::Schema.define(:version => 20140701042149) do
 
   create_table "activities", :force => true do |t|
     t.date     "date"
@@ -39,8 +39,10 @@ ActiveRecord::Schema.define(:version => 20140627091415) do
     t.string   "company"
     t.string   "email"
     t.string   "access_token"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.integer  "user_id"
+    t.integer  "organization_id"
   end
 
   create_table "linkimages", :force => true do |t|

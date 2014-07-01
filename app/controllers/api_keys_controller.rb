@@ -1,6 +1,7 @@
 class ApiKeysController < ApplicationController
 #  # GET /api_keys
 #  # GET /api_keys.json
+before_filter :authorize_user ,:only => :new
  def index
  end
 
@@ -24,6 +25,8 @@ class ApiKeysController < ApplicationController
  #render :text => params.inspect and return 
 
  @api_key = ApiKey.new(params[:api_key])
+ @api_key.organization_id = current_user.organization
+ @api_key.user_id = current_user
      respond_to do |format|
       if @api_key.save
 
@@ -34,5 +37,11 @@ class ApiKeysController < ApplicationController
         format.json { render json: @api_key.errors, status: :unprocessable_entity }
       end
     end
+end
+private 
+
+def authorize_user
+    redirect_to login_url, alert: "You dont have rights to request an api key unless you are a app user. Signup ,login and request api key." unless current_user 
+
 end
 end

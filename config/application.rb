@@ -67,12 +67,5 @@ config.middleware.use "PDFKit::Middleware", :print_media_type => true
 
   end
 end
-  ActionMailer::Base.smtp_settings = {
-    :address              => "smtp.mandrillapp.com",
-    :port                 => 25,
-    :domain               =>"localhost",
-    :user_name            => "ranzit005@gmail.com",
-    :password             => "YKlKd82H9CpYoOGYknBTAw",
-    :authentication       => "plain",
-    :enable_starttls_auto => true
-    }
+
+

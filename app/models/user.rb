@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   has_many :list_cleans, dependent: :destroy
   has_many :sales_genie_data, dependent: :destroy
   has_many :test_summaries, dependent: :destroy
+  has_one :api_key, dependent: :destroy
   #has_and_belongs_to_many :categories # categories that user have permission
   #has_and_belongs_to_many :folders # folder that user have permission to
 #  has_many :links, dependent: :destroy

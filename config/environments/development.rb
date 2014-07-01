@@ -34,24 +34,24 @@ Ozzclean::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
-  ActionMailer::Base.smtp_settings = {
-    :address              => "smtp.mandrillapp.com",
-    :port                 => 25,
-    :domain               =>"localhost",
-    :user_name            => "ranzit005@gmail.com",
-    :password             => "YKlKd82H9CpYoOGYknBTAw",
-    :authentication       => "plain",
-    :enable_starttls_auto => true
-    }
+  config.action_mailer.delivery_method = :smtp
+  # change to true to allow email to be sent during development
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default :charset => "utf-8"
+  config.action_mailer.smtp_settings = {
+    address: "smtp.gmail.com",
+    port: 587,
+    authentication: "login",
+    enable_starttls_auto: false,
+    domain: "smtp.gmail.com",
+    user_name: "ranjit.nyros@gmail.com",
+    password: "djw8ajesj",
+    openssl_verify_mode: 'none'
+    
+
+  }
 
 end
-  ActionMailer::Base.smtp_settings = {
-    :address              => "smtp.mandrillapp.com",
-    :port                 => 25,
-    :domain               =>"localhost",
-    :user_name            => "ranzit005@gmail.com",
-    :password             => "YKlKd82H9CpYoOGYknBTAw",
-    :authentication       => "plain",
-    :enable_starttls_auto => true
-    }
+
 
