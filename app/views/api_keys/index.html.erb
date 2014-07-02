@@ -59,6 +59,26 @@
 				"SystemTimeZone": "Europe\/London" <br/>
 			}<br/>
    		</p>	
+         <br/><br/>
+         <br/><br/>
+       <p class="api">
+            Here are the list of methods to access the api.
+         </p>
+         <br/>
+         <p class="api1" style="background:none;height:1px;">
+         <h3> Getting List of Records of Models  </h3><br/><br/>
+         
+         http://203.193.173.124:5000/api/users?access_token='YOUR API KEY / TOKEN' <br/><br/>
+         http://203.193.173.124:5000/api/list_cleans?access_token='YOUR API KEY / TOKEN' <br/><br/>
+         http://203.193.173.124:5000/api/sales_genie_date?access_token='YOUR API KEY / TOKEN' <br/><br/>
+         http://203.193.173.124:5000/api/test_summaries?access_token='YOUR API KEY / TOKEN' <br/><br/>
+         <h3> Getting Each Record </h3><br/><br/>
+         http://203.193.173.124:5000/api/users/show?num='ID_OF_A_RECORD'&access_token='YOUR API KEY / TOKEN'<br/><br/>
+         http://203.193.173.124:5000/api/list_cleans/show?num='ID_OF_A_RECORD'%access_token='YOUR API KEY / TOKEN'<br/><br/>
+         http://203.193.173.124:5000/api/test_summaries/show?num='ID_OF_A_RECORD'&access_token='YOUR API KEY / TOKEN'<br/><br/>
+         http://203.193.173.124:5000/api/sales_genie_data/show?num='ID_OF_A_RECORD'&access_token='YOUR API KEY / TOKEN'<br/><br/>
+         
+         </p>
 		<br/><br/>
 		<br/><br/>
 		<center><%= link_to "Generate API Key" ,new_api_key_path ,:class => 'btn btn-primary' %></center>

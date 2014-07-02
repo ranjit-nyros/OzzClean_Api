@@ -13,7 +13,12 @@ module Api
           else
             respond_with @test_summaries
           end
-        end 
+      end 
+
+      def show
+        @test_summary = TestSummary.find(params[:num].to_i)
+        respond_with @test_summary
+      end
 
   end
 end

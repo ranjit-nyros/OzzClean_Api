@@ -18,7 +18,7 @@ module Api
       end
 
       def show
-        @list_clean = ListClean.find(params[:id].to_i) if @api_key
+        @list_clean = ListClean.find(params[:num].to_i) #if @api_key
         respond_with @list_clean
       end
 

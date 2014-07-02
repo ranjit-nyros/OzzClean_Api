@@ -15,5 +15,22 @@ module Api
 
   end
 
+
+
+      def show
+            @sales_genie_data = SalesGenieDatum.find(params[:num].to_i)   
+            #respond_with @sales_genie_data
+            if @api_key  && @sales_genie_data       
+            respond_with @sales_genie_data
+          elsif !@api_key
+            render :json => "Invalid Access Token"
+          elsif
+            render :json => "Invalid ID" 
+          else
+            respond_with @sales_genie_data
+          end 
+
+      end
+
 end 
 end 
