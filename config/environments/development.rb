@@ -1,3 +1,4 @@
+require 'smtp_tls'
 Ozzclean::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
@@ -39,26 +40,25 @@ Ozzclean::Application.configure do
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default :charset => "utf-8"
+
   # config.action_mailer.smtp_settings = {
   #   address: "smtp.gmail.com",
   #   port: 587,
-  #   authentication: "login",
-  #   enable_starttls_auto: false,
-  #   domain: "smtp.gmail.com",
-  #   user_name: "ranjit.nyros@gmail.com",
-  #   password: "djw8ajesj",
-  #   openssl_verify_mode: 'none'
-    
-
+  #   domain: "example.com",
+  #   authentication: "plain",
+  #   enable_starttls_auto: true,
+  #   user_name: "veerababu.nyros@gmail.com",
+  #   password: "sjfhdsf8765"
   # }
     config.action_mailer.smtp_settings = {
-  :address => "smtp.gmail.com",
-  :port => 587,
-  :domain => "gmail.com",
-  :authentication => :login,
-  :user_name => "ranjit.nyros@gmail.com",
-  :password => "djw8ajesj"
-       }
+    address: "smtp.mandrillapp.com",
+    port: 587,
+    domain: "example.com",
+    authentication: "plain",
+    enable_starttls_auto: true,
+    user_name: "ranzit005@gmail.com",
+    password: "YKlKd82H9CpYoOGYknBTAw"
+  }
 
 end
 

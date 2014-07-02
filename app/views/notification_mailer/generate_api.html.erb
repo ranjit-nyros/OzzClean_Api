@@ -6,13 +6,17 @@
 <body>
 
 
-<p>Dear <%= @email %> </p><br>
+<p>Dear <%= @name %> </p><br>
 
 <p>Here is your generate api key.</p><br/>
 
-API Key :<%= @token %>
+API Key :<b><%= @token %> </b> <br/>
 
-You can access OzzClean using this api key . You can check the documnetation <%= link_to "Here" , "http://203.193.173.124:5000/api_keys" %>   .
+You can access OzzClean using this api key . <br/> You can check the api documentation <%= link_to "Here" , "http://203.193.173.124:5000/api_keys" %>  . <br/>
+<br/>
+
+Regards , <br/>
+OzzClean <br/>
 
 
 </body>
