@@ -5,7 +5,7 @@ module Api
 
 
       def index
-        @users = current_user.organization.users
+        @users = User.find(:all ,:conditions =>["organization_id = ?",@api_key.organization_id]) if @api_key
           if @api_key  && @users       
             respond_with @users
           elsif !@api_key

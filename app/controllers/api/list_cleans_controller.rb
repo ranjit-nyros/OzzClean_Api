@@ -6,7 +6,7 @@ module Api
       respond_to :json
 
       def index
-        @list_cleans = current_user.organization.list_cleans#ListClean.find(:all ,:conditions =>["user_id = ? and organization_id = ?",@api_key.user_id ,@api_key.organization_id]) if @api_key
+        @list_cleans = ListClean.find(:all ,:conditions =>["user_id = ? and organization_id = ?",@api_key.user_id ,@api_key.organization_id]) if @api_key
           if @api_key  && @list_cleans      
             respond_with @list_cleans
           elsif !@api_key
@@ -33,7 +33,7 @@ module Api
       def destroy
         respond_with ListClean.destroy(params[:id])
       end
-      
+
     end
   
 end

@@ -42,7 +42,7 @@ end
       @email = email
       @token = token
       
-         mail(:from => "OzzClean<ranjit_nyros@yahoo.com>",
+         mail(:from => "OzzClean<ranzit005@gmail.com>",
                :to => @email,
                
                :subject =>'API Key Request',
@@ -55,7 +55,7 @@ def thanks_feedback_email(first_name,last_name,email)
       @last_name = last_name
       @email = email
 
-         mail(:from => "OzzData<ranjit_nyros@yahoo.com",
+         mail(:from => "OzzData<ranjit.nyros@gmail.com",
                :to => email,
                :subject => "Thank You  ",
                :date => Time.now)
@@ -64,7 +64,7 @@ end
 
 def login_mail(user)
 		@user = user
-		mail(:from => "OzzClean<ranjit_nyros@yahoo.com>",
+		mail(:from => "OzzClean<ranzit005@gmail.com>",
                :to => "ranjit_nyros@yahoo.com",
                :subject => "#{user.capitalize} has Logged In",
                :date => Time.now)

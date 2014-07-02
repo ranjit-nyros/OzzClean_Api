@@ -5,7 +5,7 @@ module Api
 
 
       def index
-        @test_summaries = current_user.organization.test_summaries
+        @test_summaries = TestSummary.find(:all ,:conditions =>["user_id = ? and organization_id = ?",@api_key.user_id ,@api_key.organization_id]) if @api_key
           if @api_key  && @test_summaries       
             respond_with @test_summaries
           elsif !@api_key
