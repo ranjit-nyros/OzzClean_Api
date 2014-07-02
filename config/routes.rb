@@ -4,7 +4,9 @@ Ozzclean::Application.routes.draw do
   # For API Requests
   namespace :api, defaults: {format: 'json'} do
       resources :list_cleans
-      resources :sales_genie_data 
+      resources :sales_genie_data
+      resources :test_summaries
+      resources :users
     end
     resources :api_keys
 # End for API Requests
