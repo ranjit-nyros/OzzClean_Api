@@ -8,13 +8,13 @@ module Api
       def index
         @api_key = ApiKey.find_by_access_token(params[:access_token])
         @list_cleans = ListClean.find(:all ,:conditions =>["user_id = ? and organization_id = ?",@api_key.user_id ,@api_key.organization_id]) if @api_key
-        respond_with @list_cleans.count
+        respond_with @list_cleans
       end
 
       def show
         @api_key = ApiKey.find(params[:access_token])
         @list_clean = ListClean.find(params[:id].to_i) if @api_key
-        respond_with @list_clean.count
+        respond_with @list_clean
       end
 
       def create
