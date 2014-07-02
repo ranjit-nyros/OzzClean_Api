@@ -56,8 +56,8 @@ Ozzclean::Application.configure do
     domain: "example.com",
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: "ranzit005@gmail.com",
-    password: "YKlKd82H9CpYoOGYknBTAw"
+    user_name: "ranjit_nyros@yahoo.com",
+    password: "mvYgZPRjNEToxbkX7XZOIQ"
   }
 
 end
